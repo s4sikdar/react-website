@@ -1,0 +1,145 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.upper-nav {
+  z-index: 2;
+}
+
+.upper-nav-menu {
+  z-index: 1;
+}
+
+.offset-top {
+  top: 46px;
+}
+
+.navbar-nav.fixed-top.transparent {
+  animation: fade-in 1s;
+}
+
+.navbar-nav.fixed-top.light {
+  animation: slide-down 0.6s;
+}
+
+.nav-list-item, .transparent-item {
+  font-size: larger;
+  margin: 2px 0px 0px;
+}
+
+.nav-list-item {
+  transition: background-color 0.5s;
+  border-radius: 0.4em;
+}
+
+.transparent-item {
+  color: #F1F0EA;
+}
+
+.nav-list-item:hover, .transparent-item:hover  {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-list-item:hover {
+  background-color: #dbd7d2;
+}
+
+.transparent-item:hover {
+  color: #F1F0EA;
+}
+
+.transparent-item::after {
+  background-color: #F1F0EA;
+}
+
+.nav-list-item::after, .transparent-item::after, .transparent::after, .mobile-list-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+}
+
+.nav-list-item::after, .transparent-item::after, .mobile-list-item::after {
+  width: 0%;
+  left: 52%;
+  visibility: hidden;
+  height: 0.19em;
+  border-radius: 0.25em;
+  transition: 0.5s;
+}
+
+.nav-list-item::after {
+  height: 0.2em;
+}
+
+.nav-list-item:hover::after, .transparent-item:hover::after, .mobile-list-item:hover::after {
+  visibility: visible;
+  width: 90%;
+  left: 5%;
+}
+
+.transparent {
+  color: #F1F0EA;
+  background: transparent;
+}
+
+.transparent::after {
+  height: 0.3em;
+  border-radius: 0.2em;
+  bottom: -0.3em;
+  background-color: #F1F0EA;
+  width: 96%;
+  left: 2%;
+}
+
+/* .mobile-list-item::after {
+  width: 0%;
+  left: 52%;
+  visibility: hidden;
+  height: 0.19em;
+  border-radius: 0.25em;
+  transition: 0.5s;
+} */
+
+.mobile-list-item::after {
+  bottom: 0;
+  height: 0.18em;
+}
+
+.mobile-list-item:hover::after {
+  width: 100%;
+  left: 0%;
+}
+

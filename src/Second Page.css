@@ -1,0 +1,276 @@
+@-moz-keyframes rotate {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@-moz-keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+/* The animations to slide things from the right and the left in our timeline. */
+@keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.border-bottom-on {
+    border-bottom: 5px solid #dbd7d2;
+}
+
+/* .rem-2 {
+    font-size: 2rem;
+} */
+.button, .button:active, .button:visited,
+.btn, .btn:active, .btn:visited {
+    font-size: 1.5em;
+    line-height: 0.75;
+    color: #353535;
+    border-color: #f1f0ea;
+    border-width: 0;
+    text-decoration: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.rotate-up {
+    /* animation: rotate 0.5s linear 0s 1 normal both; */
+    transform: rotate(180deg)
+}
+
+.rotate-down {
+    /* animation: rotate 0.5s linear 0s 1 reverse both; */
+    transform: rotate(0deg);
+}
+
+.gray {
+    color: #A9A9A9;
+}
+
+.half-star {
+    background: linear-gradient(to right, black 50%, #A9A9A9 50%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skill-heading {
+    font-size: 4vw;
+}
+
+.star {
+    font-size: 5vw;
+}
+
+.right::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: -6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: block;
+    background-color: #353535;
+}
+
+.right {
+    border-left: 4px solid #353535;
+    padding-left: 20px;
+}  
+
+.opaque {
+    opacity: 0;
+}
+
+.slide_left {
+    animation: slide_left 0.5s ease-out both;
+}
+
+.slide_right {
+    animation: slide_right 0.5s ease-out both;
+}
+
+@media (max-width: 576px) {
+    .card-header {
+        padding: 0.5rem 1rem;
+    }
+
+    .button, .button:active, .button:visited,
+    .btn, .btn:active, .btn:visited {
+        font-size: 6vw;
+    }
+}
+
+@media (max-width: 420px) {
+    .skill-heading {
+        font-size: 4.5vw;
+        padding: 3px 0px;
+    }
+
+    .star {
+        font-size: 5.5vw;
+    }
+
+    .right {
+        border-width: 3px;
+        margin-left: 3%;
+    }
+
+    .right::before {
+        width: 10px;
+        height: 10px;
+        left: -2.5%;
+        top: -5px;
+    }
+
+    #saga-container {
+        padding-left: 0.8rem;
+    }
+
+    .card-header {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .button, .button:active, .button:visited,
+    .btn, .btn:active, .btn:visited {
+        font-size: 6.5vw;
+    }
+}
+
+@media (max-width: 320px) {
+    .skill-heading {
+        font-size: 5vw;
+        padding: 2px 0px;
+    }
+
+    .star {
+        font-size: 6vw;
+    }
+
+    .right {
+        border-width: 3px;
+    }
+
+    .right::before {
+        width: 10px;
+        height: 10px;
+        left: -3%;
+        top: -5px;
+    }
+
+    .button, .button:active, .button:visited,
+    .btn, .btn:active, .btn:visited {
+        font-size: 5vw;
+    }
+}
+/* #chart_div {
+    width: 80%;
+} */
+
+/* .container.position-relative {
+    height: 50%;
+} */
+
+/* @media (max-width: 835px) {
+    .container.position-relative {
+        width: 95%;
+        height: 75%;
+    }
+} */
+
+/* @media (max-width: 768px) {
+    .container.position-relative {
+        height: 100%;
+    }
+} */
+
+/* @media (max-width: 835px) */
