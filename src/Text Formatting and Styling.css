@@ -178,11 +178,19 @@ div.google-visualization-tooltip {
   .project-paragraph, .about-paragraph, .saga-paragraphs {
     font-size: 3.8vw;
   }
+
+  .card::before, .last-card::after {
+    height: 4px;
+  }
 }
 
 @media (max-width: 475px) {
   .page-headers {
     font-size: 9.6vw;
+  }
+
+  .card::before, .last-card::after {
+    height: 3px;
   }
 }
 
@@ -205,10 +213,6 @@ div.google-visualization-tooltip {
 
   .project-paragraph, .about-paragraph, .saga-paragraphs {
     font-size: 4.5vw;
-  }
-
-  .card::before, .last-card::after {
-    height: 3px;
   }
 }
 

@@ -224,6 +224,16 @@
     .btn, .btn:active, .btn:visited {
         font-size: 6.5vw;
     }
+
+    /* .svg {
+        transform: scale(0.75);
+    } */
+
+    svg {
+        /* width: 50%; */
+        width: 18px;
+        height: 18px;
+    }
 }
 
 @media (max-width: 320px) {
@@ -250,6 +260,16 @@
     .button, .button:active, .button:visited,
     .btn, .btn:active, .btn:visited {
         font-size: 5vw;
+        /* transform: scale(0.9); */
+        /* height: 50%; */
+    }
+    /* .button {
+        transform: scale(0.9);
+    } */
+    svg {
+        /* width: 50%; */
+        width: 16px;
+        height: 16px;
     }
 }
 /* #chart_div {
