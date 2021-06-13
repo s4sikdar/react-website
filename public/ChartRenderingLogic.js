@@ -157,22 +157,23 @@ function drawChart() {
       }
       
       var chart = new google.visualization.PieChart(chart_div);
-      google.visualization.events.addListener(chart, 'error', () => {
-            chart_div.className = 'w-100 m-0 p-0 GoogleChartsError'
-            console.log('An error occured with Google Charts.')
-      });
+      // google.visualization.events.addListener(chart, 'error', () => {
+      //       chart_div.className = 'w-100 m-0 p-0 GoogleChartsError'
+      //       console.log('An error occured with Google Charts.')
+      // });
       chart.draw(data, options);
 }
 
 function SetupGoogleCharts() {
-      google.charts.load('current', {packages: ['corechart']}).then(drawChart).then(() => {
-            window.addEventListener('resize', () => {
-                  if (window.innerWidth >= 768) {
-                        drawChart();
-                  }
-            });
-      });
+      google.charts.load('current', {packages: ['corechart']}).then(drawChart);
 }
+// .then(() => {
+//       window.addEventListener('resize', () => {
+//             if (window.innerWidth >= 768) {
+//                   drawChart();
+//             }
+//       });
+// });
 
 function ChartJsErrorCallback(entries, observer) {
       /*

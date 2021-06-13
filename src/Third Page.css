@@ -12,6 +12,14 @@
   
 .last-project::after {
     bottom: -0.3em;
+    /* offset: 20px; */
+}
+
+@media all and (-ms-high-contrast:none) {
+    *::-ms-backdrop, :root  .last-project::after {
+        position: relative;
+        bottom: -1em;
+    } /* IE11 */
 }
 
 .project-button {

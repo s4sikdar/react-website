@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Text Formatting and Styling.css';
 import './Second Page.css';
+require('intersection-observer');
 
 const SectionProps = [
     {
@@ -188,17 +189,43 @@ const SectionProps = [
             }
         ],
         paragraph_classname: 'opaque'
+    },
+    {
+        month: 'March',
+        header: 'March 2021',
+        text_lines: [
+            "I decided to try rebuilding my portfolio website but in REACTjs instead of plain HTML, CSS, JavaScript and Bootstrap.\
+            Though not as impressive as creating a new website from scratch, I mainly consider this to be an exercise in learning \
+            REACT. Down the road, you could possibly At work I was lucky enough to get an extension of my internshp into the \
+            spring term, which I of course took. Though I never needed to learn Flask, I've still learned a lot about how \
+            things are done in the industry vs. a side-project of mine.",
+            " - I started recreating my website in REACTjs, and got an extension on my internship."
+        ],
+        links: [
+            { 
+                last: true,
+                text: 'TL;DR',
+                class: 'spaced-link header-font font-weight-bold'
+            }
+        ],
+        paragraph_classname: 'opaque'
     }
 ];
 
 const FunnyText = props => 
+                props.link ? 
+                <a href={props.link} target={props.target || null} className = {` ${(props.class) ? props.class : ''}`}>
+                    {
+                        props.text
+                    }
+                </a> :
                 <span className = {` ${(props.class) ? props.class : ''}`}>
                     {
                         props.text
                     }
                 </span>
 
-const Description = props => {
+const TextSection = props => {
     return(
         <p className={`${(props.paragraph_classname) ? props.paragraph_classname : '' }`}>
             {
@@ -243,7 +270,7 @@ class Section extends Component {
                     (this.props.odd) ? 'right_side d-block d-xl-none' : 'right_side'}`} 
                 id = {`${this.props.month}_${(this.props.left) ? 1 : 2}`}>
                 <Header header={this.props.header} />
-                <Description {...this.props} />
+                <TextSection {...this.props} />
             </div>
         );
     }
@@ -340,9 +367,11 @@ class SagaComponent extends Component {
         this.saga_observer_callback = this.saga_observer_callback.bind(this);
         this.div_ref = React.createRef();
         this.observer_options = {
+            attributes: true,
             attributeFilter: ['class'],
         };
         this.saga_observer_options = {
+            attributes: true,
             attributeFilter: ['aria-expanded'],
             attributeOldValue: true
         };
@@ -440,18 +469,18 @@ class SagaComponent extends Component {
         // console.log(animate_divs[0].childNodes);
         if (entries[0].oldValue === 'true') {
             animate_divs.forEach(element => {
-                if (!internet_explorer) {
-                    element.children[0].setAttribute('class', 'opaque');
-                    element.children[1].setAttribute('class', 'opaque');
-                }
+                // if (!internet_explorer) {
+                element.children[0].setAttribute('class', 'opaque');
+                element.children[1].setAttribute('class', 'opaque');
+                // }
                 this.timeline_observer.unobserve(element);
             });
         } else {
             animate_divs.forEach(element => {
-                if (!internet_explorer) {
-                    element.children[0].setAttribute('class', 'opaque');
-                    element.children[1].setAttribute('class', 'opaque');
-                }
+                // if (!internet_explorer) {
+                element.children[0].setAttribute('class', 'opaque');
+                element.children[1].setAttribute('class', 'opaque');
+                // }
                 this.timeline_observer.observe(element);
             });
         }
@@ -482,4 +511,4 @@ class SagaComponent extends Component {
     }
 }
 
-export { SagaComponent, SectionProps, Description, FunnyText };
+export { SagaComponent, SectionProps, TextSection, FunnyText };

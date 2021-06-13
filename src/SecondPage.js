@@ -5,7 +5,7 @@ import './Second Page.css';
 // import { SkillsChart } from './SkillsChart.js';
 // import { GoogleChart } from './GoogleChart.js';
 import { ChartComponent } from './ChartComponent.js';
-import { SagaComponent, SectionProps, FunnyText, Description } from './SagaComponent.js';
+import { SagaComponent, SectionProps, FunnyText, TextSection } from './SagaComponent.js';
 
 // google.charts.load('current', {packages: ['corechart']});
 
@@ -89,6 +89,7 @@ class CardHeader extends Component  {
         this.observerCallback = this.observerCallback.bind(this);
         // this.dblClickHanler = this.dblClickHanler.bind(this);
         this.observer_options = {
+            attributes: true,
             attributeFilter: ['aria-expanded'],
             attributeOldValue: true
         };
@@ -101,7 +102,11 @@ class CardHeader extends Component  {
     }
 
     componentDidMount() {
-        this.observer.observe(this.header_ref.current.querySelector('button'), this.observer_options);
+        try {
+            this.observer.observe(this.header_ref.current.querySelector('button'), this.observer_options);
+        } catch (err) {
+            console.log(this.header_ref.current);
+        }
     }
 
     render() {
@@ -139,6 +144,7 @@ class CardBody extends Component {
         this.observerCallback = this.observerCallback.bind(this);
         this.div_ref = React.createRef();
         this.observer_options = {
+            attributes: true,
             attributeFilter: ['class'],
         };
         this.observer = new MutationObserver(this.observerCallback);
@@ -154,7 +160,12 @@ class CardBody extends Component {
     }
 
     componentDidMount() {
-        this.observer.observe(this.div_ref.current, this.observer_options);
+        try {
+            this.observer.observe(this.div_ref.current, this.observer_options);
+        } catch(err) {
+            console.log(this.div_ref.current);
+        }
+        
     }
 
     render() {
@@ -172,7 +183,7 @@ class CardBody extends Component {
                     {
                         (this.props.chart) ? 
                         <ChartComponent observer_options={this.observer_options} /> :
-                        <Description {...this.props} />
+                        <TextSection {...this.props} />
                     }
                 </div>
             </div>

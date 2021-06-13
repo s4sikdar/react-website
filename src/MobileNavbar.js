@@ -53,12 +53,13 @@ class NavItem extends Component {
         // scrolled to the section minus the height of the navbar. If we're in I.E., then just
         // use scroll without object literal of options (it's supported in I.E.)
         try {
-            window.scroll({
+            window.scrollTo({
                 top: (document.querySelector(this.state.href).offsetTop - nav.offsetHeight),
                 behavior: 'smooth'
             });
         } catch(err) {
-            window.scroll(0, (document.querySelector(this.state.href).offsetTop - nav.offsetHeight));
+            console.log(err);
+            window.scrollTo(0, (document.querySelector(this.state.href).offsetTop - nav.offsetHeight));
         }
         // console.log(this.link_ref.current.parentNode);
     }
@@ -67,7 +68,7 @@ class NavItem extends Component {
         return (
             <li className={`nav-item `} ref = {this.link_ref}>
                 <a className = {this.props.class_inner}
-                    href= {this.props.href} onClick = {this.click_handler}>
+                    href= {this.props.href} onClick = {document.documentMode ? null : this.click_handler}>
                     {this.props.name}
                 </a>
             </li>
