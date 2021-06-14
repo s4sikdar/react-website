@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './Text Formatting and Styling.css';
 import './Third Page.css';
+import './Database\ Icon.png';
+import './Table database.svg';
+import './New\ Dino\ Sprite.png';
+import './Database\ Icon.png';
+import './New\ Website\ Dino\ Sprite\ Small.png';
 
 const ProjectProps = [
     {

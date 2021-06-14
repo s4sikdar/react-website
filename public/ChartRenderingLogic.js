@@ -165,7 +165,20 @@ function drawChart() {
 }
 
 function SetupGoogleCharts() {
-      google.charts.load('current', {packages: ['corechart']}).then(drawChart);
+      google.charts.load('current', {packages: ['corechart']}).then(drawChart).then(function() {
+            window.addEventListener('resize', function() {
+                  try {
+                        width = this.innerWidth;
+                        // Check if thw width is enough for the chart to be redrawn, and if so then
+                        // redraw it.
+                        if (width >= 768) {
+                          drawChart();
+                        }
+                  } catch(error) {
+                  console.log(error);
+                  }
+            });
+      });
 }
 // .then(() => {
 //       window.addEventListener('resize', () => {

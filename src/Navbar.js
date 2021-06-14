@@ -38,7 +38,7 @@ class ListItem extends Component {
         return(
             <li className = "nav-item">
                 <a className = {this.props.class} href = {this.state.href} 
-                    ref = {this.current_ref} onClick = {document.documentMode ? null :  this.scroll}>
+                    ref = {this.current_ref} onClick = {(Boolean(document.documentMode)) ? null :  this.scroll}>
                     {this.props.value}
                 </a>
             </li>
@@ -64,7 +64,6 @@ class Navbar extends Component {
     }
 
     scrollHandler(entries) {
-        console.log('This worked'); 
         entries.map(entry => (entry.isIntersecting) ? this.setState({at_roof: true}) : this.setState({at_roof: false}));
     }
 
@@ -76,22 +75,23 @@ class Navbar extends Component {
     render() {
         return (
             <React.Fragment>
+                {/* && !(Boolean(document.documentMode)) */}
                 <nav className = "navbar navbar-expand d-none d-lg-flex">
                     <ul role = 'navigation'
                     className = {`navbar-nav fixed-top 
-                                ${(this.state.at_roof && !(document.documentMode)) ? 'transparent pr-3' : 'light shadow-sm'}\
+                                ${(this.state.at_roof) ? 'transparent pr-3' : 'light shadow-sm'}\
                                 justify-content-end d-none d-lg-flex upper-nav`}>
                         {this.props.values.map((value, index) => {
                             return (
                                 (index === 0) ?
                                 <ListItem key = {`${value}_${index}`} 
                                 class = {
-                                `${(this.state.at_roof && !(document.documentMode)) ? 
+                                `${(this.state.at_roof) ? // light dark-after
                                  'transparent-item mr-1 light-after' : 'nav-list-item light dark-after'}\
                                 p-2 position-relative text-decoration-none nav-link`} value = {value} link = 'root' /> :
                                 <ListItem key = {`${value}_${index}`} 
                                 class = {
-                                `${(this.state.at_roof && !(document.documentMode)) ? 
+                                `${(this.state.at_roof) ? 
                                    `transparent-item ${(index === (this.props.values.length - 1)) ? 'mr-4' : 'mr-1'} light-after` :
                                    'nav-list-item light mr-1 dark-after'}
                                 p-2 position-relative text-decoration-none nav-link`} value = {value}  

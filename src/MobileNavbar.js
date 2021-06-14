@@ -68,7 +68,7 @@ class NavItem extends Component {
         return (
             <li className={`nav-item `} ref = {this.link_ref}>
                 <a className = {this.props.class_inner}
-                    href= {this.props.href} onClick = {document.documentMode ? null : this.click_handler}>
+                    href= {this.props.href} onClick = {Boolean(document.documentMode) ? null : this.click_handler}>
                     {this.props.name}
                 </a>
             </li>

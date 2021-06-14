@@ -12,7 +12,6 @@
   
 .last-project::after {
     bottom: -0.3em;
-    /* offset: 20px; */
 }
 
 @media all and (-ms-high-contrast:none) {
@@ -50,7 +49,7 @@
     font-size: 22vw;
 }
 
-@media (max-width: 1100px) {
+@media only all and (max-width: 1100px) {
     /* #Chrome-Dino-Run {
         content: url('New Website Dino Sprite Small.png')
     } */
@@ -63,7 +62,7 @@
     }
 }
 
-@media (max-width: 992px) {
+@media only all and (max-width: 992px) {
     #NBA-Records-Database-sm {
         content: url('./Table database.svg');
         max-width: 90%;
@@ -78,7 +77,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media only all and (max-width: 768px) {
     #NBA-Records-Database-sm {
         content: url('./Database\ Icon.png');
         max-width: 50%;
@@ -89,7 +88,7 @@
     }
 }
 
-@media (max-width: 650px) {
+@media only all and (max-width: 650px) {
     /* the database icon image needs more custom styling because of its size */
     #NBA-Records-Database-sm {
         max-width: 60%;
@@ -104,7 +103,7 @@
     }
 }
 
-@media (max-width: 576px) {
+@media only all and (max-width: 576px) {
     #NBA-Records-Database-sm {
         max-width: 70%;
     }
@@ -119,7 +118,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media only all and (max-width: 500px) {
     #NBA-Records-Database-sm {
         max-width: 75%;
     }
@@ -129,7 +128,7 @@
     }
 }
 
-@media (max-width: 420px) {
+@media only all and (max-width: 420px) {
     #NBA-Records-Database-sm {
         max-width: 95%;
     }
@@ -144,7 +143,7 @@
     }
 }
 
-@media (max-width: 320px) {
+@media only all and (max-width: 320px) {
     .project-button {
         font-size: 5vw;
         padding: 3px 6px;
