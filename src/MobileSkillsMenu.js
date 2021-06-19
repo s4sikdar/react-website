@@ -28,6 +28,11 @@ const MobileSkillsProps = [
         oop: false
     },
     {
+        header: 'Django',
+        stars: 1.5,
+        oop: false
+    },
+    {
         header: 'SQL/SQLite3',
         stars: 1.5,
         oop: false
@@ -39,7 +44,7 @@ const MobileSkillsProps = [
     },
     {
         header: 'Object Oriented Design',
-        stars: 2.5,
+        stars: 2,
         oop: true
     },
     {
@@ -69,7 +74,8 @@ const Stars = props => {
                     // console.log(difference);
                     return (
                         <span 
-                            className={`${(difference >= 0) ? '' : (difference === -0.5) ? 'half-star': 'gray'} star`} 
+                            className={`${(difference >= 0) ? '' : (difference === -0.5) ? 
+                                          Boolean(document.documentMode) ? 'black' : 'half-star' : 'gray'} star`} 
                             key={`star_${val}`}>&#9733;</span>
                     );
                 })

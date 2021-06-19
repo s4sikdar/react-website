@@ -6,10 +6,10 @@ import './Second Page.css';
 const ConfigurationOptions = {
     type: 'pie',
     data: {
-        labels: ['Python', 'HTML, CSS, JavaScript', 'REACTjs', 'SQL/SQLite3', 'Git/GitHub', 'Bootstrap'],
+        labels: ['Python', 'HTML, CSS, JavaScript', 'REACTjs', 'SQL/SQLite3', 'Git/GitHub', 'Bootstrap', 'Django'],
         datasets: [{
-            data: [10, 8, 3, 2, 2, 3],
-            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146']
+            data: [10, 8, 3, 2, 2, 3, 3],
+            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146', '#AD7C59'] // AF8661 a67556
         }]
     },
     options: {
@@ -35,46 +35,57 @@ const ConfigurationOptions = {
                         case 'HTML, CSS, JavaScript': 
                             return [
                                 'At the advice of a friend, I started learning',
-                                'HTML, CSS and JavaScript around last April',
+                                'the basics of web development around last April ',
                                 '2020. I\'d say I\'ve gotten to be passable in it,',
-                                'and I\'m familiar with ES6 as well. Recently I',
-                                'was working on the front-end for a project at',
-                                'work, and designed part of the UI in HTML,',
-                                'CSS, and Vanilla JavaScript, along with',
-                                'Bootstrap.'
+                                'and jave gone on to learn REACTjs over the past',
+                                'winter.'
                             ]
                         case 'REACTjs':
                             return [
-                                'I started reading about REACTjs around',
-                                'the end of December. I\'m familiar with the',
-                                'basics of class components and functional',
-                                'components, state, and am somewhat',
-                                'familiar with the component lifecycle.'
+                                'I\'ve been learning the basics of REACTjs ',
+                                'over the last couple of months, starting around ',
+                                'the end of December/start of January. I\'m ',
+                                'familiar with the basics of components, and I ',
+                                'understand a little about state and the component ',
+                                'lifecycle as well (not much though). I recreated',
+                                'this site in REACTjs mainly as an exercise.'
                             ]
                         case 'SQL/SQLite3':
                             return [
                                 'I started learning this as part of a school',
-                                'course I took in relational databases; CS',
-                                '338. I made a final project in that class',
-                                'which is one of my side projects in GitHub.',
-                                'I also used it to add to my Tic Tac Toe',
-                                'game (also on my GitHub).'
+                                'course I took in relational databases - google ',
+                                '"CS 338 UWaterloo". I learned the basics of SQL ',
+                                'queries using the SQLite3 DBMS. I covered some ',
+                                'basics on normal forms, relational models, and ',
+                                'the E.R. model - but this was back in the ',
+                                'summer of 2020. I\'ve since used it for one of ',
+                                'my projects. I\'ve also been using the MySQL ',
+                                'command line a little at work, mainly doing ',
+                                'basic C.R.U.D. statements to check that my ',
+                                'server-side code works correctly.'
                             ]
                         case 'Git/GitHub':
                             return [
-                                'I started learning this roughly last spring.',
-                                'I\'ve mostly used it to keep track of my',
-                                'files on my local repositories. I use Git',
-                                'and GitHub extensively at work.'
+                                'I learned Git at the advice of a friend, starting ',
+                                'out by tracking my projects with it to save myself ',
+                                'from having 10 copies of the same code in different ',
+                                'file directories. I use Git and GitHub extensively ',
+                                'at work.'
                             ]
                         case 'Bootstrap':
                             return [
-                                'I learned this last fall at the advice of a friend',
-                                'who I go to for advice on my projects. He gave',
-                                'me the advice of learning and using Bootstrap,',
-                                'and its classes and accordion components',
-                                'make my life easier. I recently used it to',
-                                'develop the front-end of a project at work.'
+                                'A friend gave me the advice of learning and using ',
+                                'Bootstrap last fall, and its classes and accordion ',
+                                'components have made this project (and web ',
+                                'development) a lot easier.'
+                            ]
+                        case 'Django':
+                            return [
+                                'One of the applications that I\'ve been working on ',
+                                'at my internship is a Django applicaton, I\'ve done ',
+                                'a little of various things in Django - from ',
+                                'templating, to model querying, to view handling ',
+                                'functions.'
                             ]
                     }
                     // return skill_label + ': I learned this skill'

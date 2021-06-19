@@ -16,6 +16,12 @@ const ProjectProps = [
             'implemented with the Minimax algorithm. Make sure you have Python3 installed.'
         ],
         left: true,
+        small_screen_images: [
+            {
+                source: './Tic Tac Toe.png',
+                header_text: 'Tic Tac Toe'
+            }
+        ],
         img_src: './Tic Tac Toe.png',
         buttons: [
             {
@@ -34,6 +40,16 @@ const ProjectProps = [
         ],
         description_links: ['chrome://dino'],
         left: false,
+        small_screen_images: [
+            {
+                source: './New Dino Sprite.png',
+                header_text: 'Chrome Dino Run'
+            },
+            {
+                source: './New Website Dino Sprite Small.png',
+                header_text: 'Chrome Dino Run'
+            }
+        ],
         img_src: './New Website Dino Sprite Large.png',
         buttons: [
             {
@@ -55,6 +71,18 @@ const ProjectProps = [
         ],
         left: true,
         img_src: './Large Size Database Img.png',
+        small_screen_images: [
+
+            {
+                source: Boolean(document.documentMode) ? './Database Icon.png' : './Table database.svg',
+                header_text: 'NBA Records Database',
+                class: Boolean(document.documentMode) ? 'd-none d-md-block d-lg-none mw-60' : false
+            },
+            {
+                source: './Database Icon.png',
+                header_text: 'NBA Records Database'
+            }
+        ],
         buttons: [
             {
                 text: 'Code',
@@ -89,7 +117,7 @@ class ProjectHeader extends Component {
     render() {
         return(
             <h1 className={`pb-xl-3 pb-lg-2 project-headers 
-                            ${this.props.small ? `d-block d-${this.class_name()}-none` : `d-none d-${this.class_name()}-block`}`}
+                            d-${this.props.small ? `block` : `none`} d-lg-${this.props.small ? `none` : `block`}`}
                 id={`${this.props.header_text.replace(/\s+/g, '-')}-sm-header`}>
                                 {this.props.header_text}
             </h1>
@@ -162,7 +190,25 @@ class Section extends Component {
     
         this.state = {
         }
+
+        this.image = this.image.bind(this);
     }
+    
+    image(props, index) {
+        let class_name = props.source.replace('./', '');
+        console.log(props.source, class_name);
+        class_name = class_name.replace(/[.\/\s*]/g, '-');
+        console.log(props.source, class_name);
+        console.log(props.class);
+        return (
+            <img src={props.source}
+            className={`mw-70 mx-auto ${(props.class) ? props.class : class_name} 
+                        ${(props.header_text === 'NBA Records Database') ? 'my-2 my-md-3' : 
+                          (props.header_text === 'Tic Tac Toe') ? 'my-2' : 'my-0 '}
+                        my-lg-0`} key={index} alt='Image not available'/>
+        );
+    }
+    
     // ${(this.props.header_text === 'Tic Tac Toe') ?
     // project ${this.props.last_card ? 'last-project' : ''}
     render() {
@@ -173,11 +219,16 @@ class Section extends Component {
                 <div className={`text-center d-block 
                                  d-${(this.props.header_text === 'Tic Tac Toe') ? 'lg' : 'lg'}-none w-100 px-3 px-sm-4`}>
                     <ProjectHeader header_text={this.props.header_text} small={true}/>
-                    <img src={this.props.img_src} id={`${this.props.header_text.replace(/\s+/g, '-')}-sm`}
+                    {
+                        this.props.small_screen_images.map((prop, index) => {
+                            return this.image(prop, `${prop.source.replace('./', '').replace(/(.|\\|\/)\s*/g, '-')}_${index + 1}`);
+                        })
+                    }
+                    {/* <img src={this.props.img_src} id={`${this.props.header_text.replace(/\s+/g, '-')}-sm`}
                         className={`mw-70 mx-auto 
                                    ${(this.props.header_text === 'NBA Records Database') ? 'my-2 my-md-3' : 
                                      (this.props.header_text === 'Tic Tac Toe') ? 'my-2' : 'my-0 '}
-                                   my-lg-0`}/>
+                                   my-lg-0`}/> */}
                 </div>
                 <div className={`col-12 col-${(this.props.header_text === 'Tic Tac Toe') ? 'lg' : 'lg'}-6 d-flex
                                  ${(this.props.left) ? 

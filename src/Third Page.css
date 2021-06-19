@@ -44,9 +44,23 @@
     color: #353535;
 }
 
+#mobile_linkedin {
+    font-size: 20vw;
+}
+
 #mobile_gmail {
     color: #353535;
     font-size: 22vw;
+}
+
+.New-Dino-Sprite-png, .Table-database-svg, .Database-Icon-png,
+.New-Website-Dino-Sprite-Small-png {
+    display: none;
+}
+
+.Table-database-svg {
+    max-width: 90%;
+    /* display: none; */
 }
 
 @media only all and (max-width: 1100px) {
@@ -56,6 +70,10 @@
     #NBA-Records-Database {
         content: url('./Database\ Icon.png');
     }
+
+    /* .Database-Icon-png {
+        display: block;
+    } */
     
     .project-button {
         font-size: 1.25em;
@@ -63,52 +81,83 @@
 }
 
 @media only all and (max-width: 992px) {
-    #NBA-Records-Database-sm {
+    /* #NBA-Records-Database-sm {
         content: url('./Table database.svg');
-        max-width: 90%;
+    } */
+
+    /* .Database-Icon-png {
+        display: none;
+    } */
+
+    .Table-database-svg, .New-Dino-Sprite-png {
+        display: block;
     }
 
-    #Chrome-Dino-Run-sm {
+    /* #Chrome-Dino-Run-sm {
         content: url('./New\ Dino\ Sprite.png');
+    } */
+
+    .mw-60 {
+        max-width: 50%;
     }
 
-    #Tic-Tac-Toe-sm {
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 55%;
     }
 }
 
-@media only all and (max-width: 768px) {
-    #NBA-Records-Database-sm {
+@media only all and (max-width: 767px) {
+    /* #NBA-Records-Database-sm {
         content: url('./Database\ Icon.png');
+    } */
+
+    .Table-database-svg {
+        display: none;
+    }
+
+    .Database-Icon-png {
+        display: block;
         max-width: 50%;
     }
 
-    #Tic-Tac-Toe-sm {
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 65%;
     }
 }
 
 @media only all and (max-width: 650px) {
     /* the database icon image needs more custom styling because of its size */
-    #NBA-Records-Database-sm {
+    /* #NBA-Records-Database-sm {
         max-width: 60%;
-    }
+    } */
 
-    #Tic-Tac-Toe-sm {
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 70%;
     }
 
-    #Chrome-Dino-Run-sm {
+    .New-Dino-Sprite-png {
+        display: none;
+    }
+
+    /* #Chrome-Dino-Run-sm {
         content: url('./New\ Website\ Dino\ Sprite\ Small.png');
+    } */
+
+    .New-Website-Dino-Sprite-Small-png {
+        display: block;
+    }
+
+    .Database-Icon-png {
+        max-width: 60%;
     }
 }
 
 @media only all and (max-width: 576px) {
-    #NBA-Records-Database-sm {
+    /* #NBA-Records-Database-sm {
         max-width: 70%;
-    }
+    } */
 
-    #Tic-Tac-Toe-sm {
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 75%;
     }
 
@@ -116,30 +165,42 @@
         font-size: 4vw;
         padding: 3px 6px;
     }
+
+    .Database-Icon-png {
+        max-width: 70%;
+    }
 }
 
 @media only all and (max-width: 500px) {
-    #NBA-Records-Database-sm {
+    /* #NBA-Records-Database-sm {
         max-width: 75%;
+    } */
+
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
+        max-width: 80%;
     }
 
-    #Tic-Tac-Toe-sm {
-        max-width: 80%;
+    .Database-Icon-png {
+        max-width: 75%;
     }
 }
 
 @media only all and (max-width: 420px) {
-    #NBA-Records-Database-sm {
+    /* #NBA-Records-Database-sm {
         max-width: 95%;
-    }
+    } */
 
-    #Tic-Tac-Toe-sm {
+    #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 85%;
     }
 
     .project-button {
         font-size: 4.5vw;
         padding: 3px 6px;
+    }
+
+    .Database-Icon-png {
+        max-width: 95%;
     }
 }
 
