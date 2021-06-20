@@ -65,7 +65,7 @@ const AccordionProps = [
         expanded: false
     },
     {
-        title: 'Skills',
+        title: 'Relative Skills',
         parent_id: 'Accordion',
         expanded: true,
         chart: true

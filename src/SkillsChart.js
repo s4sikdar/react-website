@@ -1,7 +1,31 @@
 import Chart from 'chart.js';
 import React, { Component } from 'react'
 import './Second Page.css';
-// import 
+import { TextSection } from './SagaComponent.js';
+
+const disclaimer_text = {
+    paragraph_classname: 'text-center my-1 pb-0 d-none d-md-block',
+    links: [
+        {
+            text: '*',
+            class: 'font-weight-bold'
+        },
+        {
+            text: 'Disclaimer: ',
+            class: 'font-weight-bold'
+        },
+        {
+            text: '*',
+            class: 'font-weight-bold'
+        }
+    ],
+    text_lines: [
+        '',
+        '',
+        'skills are rated relative to each other.',
+        ''
+    ]
+}
 
 const ConfigurationOptions = {
     type: 'pie',
@@ -138,6 +162,7 @@ class SkillsChart extends Component {
                 <h4 className="text-center pt-0 pb-1 my-0 chart-heading">
                     Hover over/touch a section for more info, touch off it for less.
                 </h4>
+                <TextSection {...disclaimer_text} />
                 <div ref = {this.props.ref_prop} id='chart_div' className='position-relative'>
                     <canvas id='myChart' width={`${this.state.previous_width}`} height={`${this.state.previous_width}`}>
                     </canvas>

@@ -46,6 +46,7 @@
 
 #mobile_linkedin {
     font-size: 20vw;
+    transform: translateY(5%);
 }
 
 #mobile_gmail {
