@@ -1,3 +1,6 @@
+/* 
+This class gives you a slightly darker translucent shade when you hover over the front page.
+*/
 .dark-hover{
   background-color: rgba(0,0,0,0);
   transition: 1s;
@@ -7,10 +10,12 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
+/* 
+The background image on the front page.
+*/
 .background-charcoal {
   background-image: url("./Background Charcoal.png");
 }
-
 
 .bs-tooltip-auto[x-placement^=bottom] .arrow::before, .bs-tooltip-bottom .arrow::before {
   border-bottom-color: #F1F0EA;
@@ -32,30 +37,38 @@
   font-weight: 500;
   /* color: #F1F0EA;  */
 }
-
+/* 
+This class translates down the header a little to center it with the icons a little more.
+*/
 .translate-down {
   -webkit-transform: translateY(15%);
   -ms-transform: translateY(15%);
   transform: translateY(15%);
 }
 
-.color-light {
-  color: #F1F0EA;
-}
 
+/* 
+Size the inner element tag that makes up the icon component.
+*/
 .link-icon {
   font-size: 4vw;
 }
 
+/* 
+Set the resume icon to be slightly smaller.
+*/
 .smaller {
   font-size: 3.7vw;
 }
 
+/* 
+The icons don't align on the same imaginary line (from the bottom side) very well. So I added some
+translations on some of the icons to align them. These classes are dedicate to it.
+*/
 .github {
   -webkit-transform: translateY(5%);
   -ms-transform: translateY(5%);
   transform: translateY(5%);
-  /* font-size: 3vw; */
 }
 
 .gmail {
@@ -64,23 +77,33 @@
   transform: translateY(80%);
 }
 
-.main-header{
-  font-size: 9vw;
-}
-
 .resume {
   -moz-transform: translateY(-5%);
   -webkit-transform: translateY(-5%);
   transform: translateY(-5%);
 }
 
+/* 
+The main header on the main page.
+*/
+.main-header {
+  font-size: 9vw;
+}
+
 @media (max-width: 992px) {
+  /* 
+  Change the size of the main header. Also set it to go over onto the next line, because the name
+  doesn't fit well on one line on narrower devices.
+  */
   .main-header {
     font-size: 16vw;
     content: 'Sailesh \nSikdar';
     line-height: 1.1;
   }
 
+  /* 
+  There is a line under the main header (my name) that shows on narrower devices. Inspired by:
+  */
   .main-header::after {
     content: '';
     position: absolute;
@@ -99,12 +122,11 @@
     font-size: 6vw;
   }
 
-  /* .translate-down {
-    -webkit-transform: translateY(6%);
-    -ms-transform: translateY(6%);
-    transform: translateY(6%);
-  } */
-
+  /* 
+  This class is the icon container that holds the icons that you click on.
+  Change it to be of a different width, and shift it closer to the main header a
+  little.
+  */
   .icon-container {
     width: 60%;
     -webkit-transform: translateY(25%);
@@ -184,7 +206,6 @@
 @media (max-width: 576px) {
   .main-header {
     font-size: 20vw;
-    /* line-height: 1.2; */
   }
 
   .main-header::after {
@@ -214,14 +235,6 @@
 
 @media (max-width: 420px) {
   .main-header::after {
-    /* width: 82%;
-    left: 9%; */
     height: 0.06em;
   }
 }
-
-/* @media (max-width: 320px) {
-  .main-header::after {
-
-  }
-} */

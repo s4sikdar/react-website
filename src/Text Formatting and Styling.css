@@ -1,28 +1,31 @@
-@keyframes opacity-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+/* 
+This page is a set of "utility classes" that are used throughout the website, such as font, or a
+header type that shows up throughout the website and has a similar styling. The classes are then
+applied to that header, instead of styling the header with the same rules throughout the website.
+*/
 
+/* 
+The h1 tags at the start of different sections of the website.
+*/
 .page-headers {
   font-size: 4.2vw;
   font-weight: bolder;
 }
 
+/* 
+The font that various headings share throughout the website.
+*/
 .header-font {
   font-family: 'Lucida Console', monospace, Calibri, Arial, Verdana;
 }
 
+/* 
+The color scheme is repeated throughout the site, and is reversed. So I put it here.
+The same goes for the next couple of rules.
+*/
 .light, .light-after::after, .light-before::before {
   background-color: #F1F0EA;
   color: #353535;
-}
-
-.text-decoration-line-through {
-  text-decoration: line-through;
 }
 
 .light:hover {
@@ -38,68 +41,65 @@
   color: #F1F0EA;
 }
 
-div.google-visualization-tooltip {
-  /* background-color: #F1F0EA; */
-  /* color: #353535; */
-  background-color: #353535;
+.color-light {
   color: #F1F0EA;
-  max-width: 400px;
-  /* box-shadow: 0px 4px 8px 0px rgb(204 204 204 / 60%); */
-  box-shadow: 0px 4px 8px 0px rgba(53, 53, 53, 0.6);
-  /* animation: opacity-fade 0.5s both; */
-  /* animation-iteration-count: initial; */
 }
-
-.chart-heading {
-  font-size: 2.5vw;
-  line-height: 1.3;
-}
-
-
+/* 
+These classes are used for span tags in the second and third pages.
+*/
 .link, .spaced-link {
   background-color: #dbd7d2;
   border-radius: 0.25em;
   padding: 2px 4px;
 }
 
-.card::before, .last-card::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 5px;
-  border-radius: 0.25em;
-}
-
-.card::before {
-  top: 0;
-}
-
-.last-card::after {
-  bottom: -0.3em;
-}
-
+/* 
+The headers for the projects in the third page.
+*/
 .project-headers {
   font-size: 3.4vw;
 }
 
+/* 
+Size styling for the description text for each project in the projects section.
+*/
 .project-paragraph {
   font-size: 1.5vw;
 }
 
+/* 
+The size styling for the text sections in the timeline. 
+*/
 .saga-paragraphs {
   font-size: 1.2em;
 }
 
+/* 
+The headings on the dropdown tabs
+*/
 .card-headings {
   font-size: 2.2rem;
 }
 
+/* 
+The text in each section for the dropdown tabs.
+*/
 .about-paragraph {
   font-size: 1.1rem;
 }
 
+/* 
+The headings for each section of the text sections that slide in in the timeline.
+*/
 .saga-header{
   font-size: 1.5em;
+}
+
+/* 
+Max width on images that are shown in the Projects section
+*/
+.mw-90 {
+  max-width: 90%;
 }
 
 @media (max-width: 1300px) {
@@ -133,6 +133,13 @@ div.google-visualization-tooltip {
 
   #Tic-Tac-Toe-sm-header {
     font-size: 3em;
+  }
+
+  /* 
+  This applies to I.E. 11 on an image that shows when the device has 768px <= width <= 992px
+  */
+  .mw-50 {
+    max-width: 50%;
   }
 }
 
@@ -178,19 +185,11 @@ div.google-visualization-tooltip {
   .project-paragraph, .about-paragraph, .saga-paragraphs {
     font-size: 3.8vw;
   }
-
-  .card::before, .last-card::after {
-    height: 4px;
-  }
 }
 
 @media (max-width: 475px) {
   .page-headers {
     font-size: 9.6vw;
-  }
-
-  .card::before, .last-card::after {
-    height: 3px;
   }
 }
 

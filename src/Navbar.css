@@ -1,20 +1,4 @@
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-down {
-  0% {
-    top: -20%;
-  }
-  100% {
-    top: 0%;
-  }
-}
+@import './Animations.css';
 
 html, body {
   width: 100%;
@@ -34,41 +18,75 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* 
+Give the navbar a higher z-index.
+*/
 .upper-nav {
   z-index: 2;
 }
 
+/* 
+In narrower devices, you can click the button on the right side of the navbar, and a menu will
+drop down. These will be links to various sections of the website. Give it a lower z-index, and
+the you will see that the shadow of the main navbar drops over the menu that drops down.
+*/
 .upper-nav-menu {
   z-index: 1;
 }
 
+/* 
+Offset the dropdown content of the mobile navbar, due to the navbar itself.
+*/
 .offset-top {
   top: 46px;
 }
 
+/* 
+Animation to fade in the transparent navbar that shows up when the page is scrolled to the top on
+large devices.
+*/
 .navbar-nav.fixed-top.transparent {
   animation: fade-in 1s;
 }
 
+/* 
+The animation to slide down the light colored navbar that shows up when the page is not scrolled
+up to the top.
+*/
 .navbar-nav.fixed-top.light {
   animation: slide-down 0.6s;
 }
 
+/* 
+The links for the navbar that shows up on regular computers. transparent-item is for the
+transparent navbar that shows at the top of the page, nav-list-item shows when the pages slides
+down from the top
+*/
 .nav-list-item, .transparent-item {
   font-size: larger;
   margin: 2px 0px 0px;
 }
 
+/* 
+The color on nav-list-item and changes on hover, the text is bold, and you see an underline
+animation. However, the code for the classes was structured as it was below to avoid repeatedly
+coding the same CSS rules for a class. If both classes share the rules, I grouped them together to
+save code. This slightly helps to get smaller file sizes in the production bundle.
+*/
 .nav-list-item {
   transition: background-color 0.5s;
   border-radius: 0.4em;
 }
 
-.transparent-item {
+/* 
+transparent item has a light brown color, with both text that turns bold on hover, and an underline
+animation that takes place.
+*/
+.transparent-item, .transparent-item:hover {
   color: #F1F0EA;
 }
 
-.nav-list-item:hover, .transparent-item:hover  {
+.nav-list-item:hover, .transparent-item:hover {
   text-decoration: none;
   font-weight: bold;
 }
@@ -77,10 +95,15 @@ code {
   background-color: #dbd7d2;
 }
 
-.transparent-item:hover {
+/* .transparent-item:hover {
   color: #F1F0EA;
-}
+} */
 
+/* 
+The next few rules are code for the underline animations you see when hovering over the links,
+as well as for the mobile links that show on the dropdown menu when you click the tab on the right
+side of the navbar.
+*/
 .transparent-item::after {
   background-color: #F1F0EA;
 }
@@ -110,6 +133,10 @@ code {
   left: 5%;
 }
 
+/* 
+This is the code for the light-tan line that slides across the top page of the website when you are
+scrolled to the top. It is the navbar style that shows when you are scrolled to the top.
+*/
 .transparent {
   color: #F1F0EA;
   background: transparent;
@@ -124,15 +151,9 @@ code {
   left: 2%;
 }
 
-/* .mobile-list-item::after {
-  width: 0%;
-  left: 52%;
-  visibility: hidden;
-  height: 0.19em;
-  border-radius: 0.25em;
-  transition: 0.5s;
-} */
-
+/* 
+The underline for the links on the mobile menu are styled a little differently.
+*/
 .mobile-list-item::after {
   bottom: 0;
   height: 0.18em;
@@ -142,4 +163,3 @@ code {
   width: 100%;
   left: 0%;
 }
-

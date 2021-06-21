@@ -1,0 +1,132 @@
+/* 
+A css file for all animations that are used in the site.
+*/
+/* @-moz-keyframes rotate {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotate {
+    from {
+        transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(180deg);
+    }
+} */
+
+/* 
+This is used for the sliding text animations in the about section (open the
+"The Saga so Far" section). This slides text in from the right side (it slides left).
+*/
+@-moz-keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+/* 
+Animations for the same purpose as above, but it slides to the right 
+from the left side.
+*/
+
+@-moz-keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_right {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+/* 
+A fading in animation, used for the transparent navbar that shows when the page is scrolled to the
+top.
+*/
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* 
+A sliding-down animaton, used to bring the navbar you see when the page is not scrolled to the top.
+*/
+@keyframes slide-down {
+    0% {
+        top: -20%;
+    }
+    100% {
+        top: 0%;
+    }
+}

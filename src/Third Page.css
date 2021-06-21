@@ -1,3 +1,6 @@
+/* 
+This is all Styling for the lines that separate projects in the third page. 
+*/
 .project::before, .last-project::after {
     position: absolute;
     content: '';
@@ -14,13 +17,20 @@
     bottom: -0.3em;
 }
 
+/* 
+I.E. 11 styling due to a bug in I.E. 11 for the lines that separate individual side-projects (last line specifically),
+found here: https://stackoverflow.com/questions/20541306/how-to-write-a-css-hack-for-ie-11
+*/
 @media all and (-ms-high-contrast:none) {
     *::-ms-backdrop, :root  .last-project::after {
         position: relative;
         bottom: -1em;
-    } /* IE11 */
+    }
 }
 
+/* 
+Styling for the buttons in the project sections that say "Application" or "Code"
+*/
 .project-button {
     border-radius: 0.5em;
     transition: 0.35s linear;
@@ -35,25 +45,34 @@
     color: #353535;
 }
 
-.mw-70 {
-    max-width: 90%;
-}
-
+/* 
+The linkedin and gmail icons on the contact section that shows up only on small devices. 
+*/
 .icons {
     font-size: 20vw;
     color: #353535;
 }
 
-#mobile_linkedin {
-    font-size: 20vw;
-    transform: translateY(5%);
-}
-
+/* 
+The icons don't naturally align well, so some customization is needed.
+*/
 #mobile_gmail {
     color: #353535;
-    font-size: 22vw;
+    font-size: 24vw;
+    transform: translateY(-7%);
 }
 
+/* 
+There are different images that are loaded, and they are shown on different devices. The class 
+represents the image source, but with any periods and slashes replaced with an empty string at the
+beginning, and a dash anywhere else.
+
+Example:
+'./New\ Dino\ Sprite.png' -> New-Dino-Sprite-png
+
+This is the class for the image with source './New\ Dino\ Sprite.png'. This image is only supposed
+to be shown on certain device widths, so the CSS rules and media queries are set accordingly.
+*/
 .New-Dino-Sprite-png, .Table-database-svg, .Database-Icon-png,
 .New-Website-Dino-Sprite-Small-png {
     display: none;
@@ -61,20 +80,21 @@
 
 .Table-database-svg {
     max-width: 90%;
-    /* display: none; */
 }
 
+/* 
+The different image tags with different image sources should be shown on different device widths.
+The media queries encompass this, and also changing the size of the text and padding of the buttons
+in the projects section. So I will refrain too many more comments on the media queries.
+*/
 @media only all and (max-width: 1100px) {
-    /* #Chrome-Dino-Run {
-        content: url('New Website Dino Sprite Small.png')
-    } */
+    /* 
+    This only works on Edge and Chrome, but not on Firefox or I.E. 11. But that's okay. It doesn't
+    look too bad.
+    */
     #NBA-Records-Database {
         content: url('./Database\ Icon.png');
     }
-
-    /* .Database-Icon-png {
-        display: block;
-    } */
     
     .project-button {
         font-size: 1.25em;
@@ -82,24 +102,8 @@
 }
 
 @media only all and (max-width: 992px) {
-    /* #NBA-Records-Database-sm {
-        content: url('./Table database.svg');
-    } */
-
-    /* .Database-Icon-png {
-        display: none;
-    } */
-
     .Table-database-svg, .New-Dino-Sprite-png {
         display: block;
-    }
-
-    /* #Chrome-Dino-Run-sm {
-        content: url('./New\ Dino\ Sprite.png');
-    } */
-
-    .mw-60 {
-        max-width: 50%;
     }
 
     #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
@@ -108,10 +112,6 @@
 }
 
 @media only all and (max-width: 767px) {
-    /* #NBA-Records-Database-sm {
-        content: url('./Database\ Icon.png');
-    } */
-
     .Table-database-svg {
         display: none;
     }
@@ -127,11 +127,6 @@
 }
 
 @media only all and (max-width: 650px) {
-    /* the database icon image needs more custom styling because of its size */
-    /* #NBA-Records-Database-sm {
-        max-width: 60%;
-    } */
-
     #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 70%;
     }
@@ -139,10 +134,6 @@
     .New-Dino-Sprite-png {
         display: none;
     }
-
-    /* #Chrome-Dino-Run-sm {
-        content: url('./New\ Website\ Dino\ Sprite\ Small.png');
-    } */
 
     .New-Website-Dino-Sprite-Small-png {
         display: block;
@@ -154,10 +145,6 @@
 }
 
 @media only all and (max-width: 576px) {
-    /* #NBA-Records-Database-sm {
-        max-width: 70%;
-    } */
-
     #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 75%;
     }
@@ -173,10 +160,6 @@
 }
 
 @media only all and (max-width: 500px) {
-    /* #NBA-Records-Database-sm {
-        max-width: 75%;
-    } */
-
     #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 80%;
     }
@@ -187,10 +170,6 @@
 }
 
 @media only all and (max-width: 420px) {
-    /* #NBA-Records-Database-sm {
-        max-width: 95%;
-    } */
-
     #Tic-Tac-Toe-sm, .Tic-Tac-Toe-png {
         max-width: 85%;
     }

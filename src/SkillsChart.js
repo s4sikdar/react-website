@@ -173,4 +173,4 @@ class SkillsChart extends Component {
     }
 }
 
-export { SkillsChart };
+export { SkillsChart, disclaimer_text };

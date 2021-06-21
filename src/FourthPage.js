@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon, InlineIcon } from '@iconify/react';
 import gmailIcon from '@iconify-icons/mdi/gmail';
 import './Text Formatting and Styling.css';
+import './Third Page.css';
 
 const Text = {
     header: 'Contact',
@@ -13,18 +14,18 @@ const Links = [
         id: 'mobile_linkedin',
         link: 'https://ca.linkedin.com/in/sailesh-sikdar-96277a17a',
         class: 'd-inline-block',
-        inner_class: 'icons fab fa-linkedin fa-sm'
+        inner_class: 'fab fa-linkedin fa-sm icons'
     },
     {
         id: 'mobile_gmail',
         link: 'mailto:saileshsikdar1@gmail.com',
-        class: 'align-bottom',
+        class: 'd-inline-block',
         inner_class: 'icons iconify icon:mdi-gmail icon-inline:false'
     }
 ]
 
 const ContactHeader = props => <h1 className='text-center w-100 p-0 page-headers pb-0 pt-3 mb-0 header-font font-weight-bold'>{props.header}</h1>
-const ContactText = props => <p className='px-4 text-center my-0 w-100 card-body pb-2 pt-1'>{props.text}</p>
+const ContactText = props => <p className='px-4 text-center my-0 w-100 card-body pb-0 pt-1'>{props.text}</p>
 
 const Link = props => {
     return(
@@ -46,7 +47,7 @@ const Link = props => {
 
 const IconMenu = props => {
     return(
-        <div className='d-flex d-md-none justify-content-center align-items-center mx-auto mh-25 pt-1'>
+        <div className='d-flex d-md-none justify-content-center align-items-center mx-auto mh-25'>
             {
                 Links.map(prop => <Link {...prop} key={`${prop.id}_key`}/>)
             }

@@ -1,106 +1,49 @@
-@-moz-keyframes rotate {
-    from {
-        -moz-transform: rotate(0deg);
-    }
-    to {
-        -moz-transform: rotate(180deg);
-    }
+@import './Animations.css';
+
+/* 
+The code for the lines that separate tabs in the dropdown menu.
+*/
+.card::before, .last-card::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 5px;
+    border-radius: 0.25em;
+}
+  
+.card::before {
+    top: 0;
 }
 
-@-webkit-keyframes rotate {
-    from {
-        transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-    } 
-    to {
-        transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-    }
+.last-card::after {
+    bottom: -0.3em;
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    } 
-    to {
-        transform: rotate(180deg);
-    }
+/* 
+In I.E. 11 on large browsers, the skills section uses the Google Charts API. A pie chart is used 
+for this, and when clicking on a slice that represents a skill, you will see text that describes
+that particular slice pop up. This text box used to be white with black text, I changed the style a
+little (dark gray with light brown text, and a little bit of a drop shadow).
+*/
+div.google-visualization-tooltip {
+    background-color: #353535;
+    color: #F1F0EA;
+    max-width: 400px;
+    box-shadow: 0px 4px 8px 0px rgba(53, 53, 53, 0.6);
 }
 
-@-moz-keyframes slide_left {
-    0% {
-        transform: translateX(20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes slide_left {
-    0% {
-        transform: translateX(20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-/* The animations to slide things from the right and the left in our timeline. */
-@keyframes slide_left {
-    0% {
-        transform: translateX(20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes slide_right {
-    0% {
-        transform: translateX(-20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-@-webkit-keyframes slide_right {
-    0% {
-        transform: translateX(-20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
-@keyframes slide_right {
-    0% {
-        transform: translateX(-20%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-
+/* 
+The bottom border on the dropdown menu in the About, that shows when you open a dropdown tab (the
+tan line that replaces the black line. 
+*/
 .border-bottom-on {
     border-bottom: 5px solid #dbd7d2;
 }
 
-/* .rem-2 {
-    font-size: 2rem;
-} */
+/* 
+Styling on the buttons for the dropdown tabs (the caret icons that rotate up or down when the tab
+expands). There was default stylng on the buttons that didn't mix wiith the carets.
+*/
 .button, .button:active, .button:visited,
 .btn, .btn:active, .btn:visited {
     font-size: 1.5em;
@@ -120,20 +63,40 @@
     box-shadow: none;
 }
 
+/* 
+The class that is used to rotate the caret icon to be facing up (this class is applied when the
+user clicks the button the tab and it opens)
+*/
 .rotate-up {
-    /* animation: rotate 0.5s linear 0s 1 normal both; */
     transform: rotate(180deg)
 }
 
+/* 
+The class that is used to rotate the caret icon to be facing down (this is used when the tab is
+closed, which is by default).
+*/
 .rotate-down {
-    /* animation: rotate 0.5s linear 0s 1 reverse both; */
     transform: rotate(0deg);
 }
 
+/* 
+This is used on the stars that show up. They are gray when not filled in, black when they are.
+*/
 .gray {
     color: #A9A9A9;
 }
 
+/* 
+A star that is halfway filled in. This star will be half black half gray, halfway being from the
+left to right direction like below (bad star, but that should clear it up)
+    /|\
+___/ | \___
+\    |    /
+ \   |   /
+  |  |  |
+  / / \ \
+ //    \\
+*/
 .half-star {
     background: -moz-linear-gradient(right, #000 50%, #A9A9A9 50%);
     background: -webkit-gradient(linear, right top, left top, color-stop(50%,black), color-stop(50%,#A9A9A9));
@@ -147,18 +110,27 @@
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
 }
 
+/* 
+The skill listed next to the stars
+*/
 .skill-heading {
     font-size: 4vw;
 }
 
+/* 
+Sizing of the stars.
+*/
 .star {
     font-size: 5vw;
 }
 
+/* 
+This is used for the timeline. There is a line that goes down the centre that text slides next to
+as you scroll down. This is the styling for the dot that indicates a new text section sliding in.
+*/
 .right::before {
     content: '';
     position: absolute;
@@ -171,15 +143,26 @@
     background-color: #353535;
 }
 
+/* 
+This is for the line that runs down the timeline that text slides into. This class is actually
+applied to divs and that line is actually the border of many divs that have this kind of styling.
+*/
 .right {
     border-left: 4px solid #353535;
     padding-left: 20px;
 }  
 
+/* 
+The text sections in the timeline are opaque, and then slide in and become visible. This class
+keeps them opaque.
+*/
 .opaque {
     opacity: 0;
 }
 
+/* 
+The classes that apply the animations to slide text in.
+*/
 .slide_left {
     animation: slide_left 0.5s ease-out both;
 }
@@ -188,6 +171,24 @@
     animation: slide_right 0.5s ease-out both;
 }
 
+/* 
+Used on one of the span tags in the second page.
+*/
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+/* 
+Chart heading: this is for the 
+*/
+.chart-heading {
+    font-size: 2.5vw;
+    line-height: 1.3;
+}
+
+/* 
+Resize the classes above to support different devices.
+*/
 @media (max-width: 576px) {
     .card-header {
         padding: 0.5rem 1rem;
@@ -201,13 +202,17 @@
     .border-bottom-on {
         border-bottom: 4px solid #dbd7d2;
     }
+
+    .card::before, .last-card::after {
+        height: 4px;
+    }
 }
 
-/* @media (max-width: 475px) {
-    .border-bottom-on {
-        border-bottom: 3px solid #dbd7d2;
+@media (max-width: 475px) {
+    .card::before, .last-card::after {
+        height: 3px;
     }
-} */
+}
 
 @media (max-width: 420px) {
     .skill-heading {
@@ -231,6 +236,10 @@
         top: -5px;
     }
 
+    /* 
+    On small devices, the line is to the left, and text slides in from the right. So there is some
+    different padding.
+    */
     #saga-container {
         padding-left: 0.8rem;
     }
@@ -244,12 +253,10 @@
         font-size: 6.5vw;
     }
 
-    /* .svg {
-        transform: scale(0.75);
-    } */
-
+    /* 
+    The caret icons become too big on small devices, so I use media queries to resize them.
+    */
     svg.bi-caret-down-fill {
-        /* width: 50%; */
         width: 18px;
         height: 18px;
     }
@@ -279,37 +286,10 @@
     .button, .button:active, .button:visited,
     .btn, .btn:active, .btn:visited {
         font-size: 5vw;
-        /* transform: scale(0.9); */
-        /* height: 50%; */
     }
-    /* .button {
-        transform: scale(0.9);
-    } */
+
     svg.bi-caret-down-fill {
-        /* width: 50%; */
         width: 16px;
         height: 16px;
     }
 }
-/* #chart_div {
-    width: 80%;
-} */
-
-/* .container.position-relative {
-    height: 50%;
-} */
-
-/* @media (max-width: 835px) {
-    .container.position-relative {
-        width: 95%;
-        height: 75%;
-    }
-} */
-
-/* @media (max-width: 768px) {
-    .container.position-relative {
-        height: 100%;
-    }
-} */
-
-/* @media (max-width: 835px) */

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './Text Formatting and Styling.css';
+import './Second Page.css';
+import { TextSection } from './SagaComponent.js';
+import {disclaimer_text} from './SkillsChart.js';
+// import './Text Formatting and Styling.css';
 
 // const loadScript = (src, id) => {
 //     return new Promise((resolve, reject) => {
@@ -67,6 +70,7 @@ class GoogleChart extends Component {
                 <h4 className="text-center pt-3 my-0 chart-heading">
                     Click a section for more info, click it again for less.
                 </h4>
+                <TextSection {...disclaimer_text} />
                 <div id = "chart_div" className = 'w-100 m-0 p-0 GoogleCharts'>
                 </div>
             </div>

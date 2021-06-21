@@ -76,7 +76,7 @@ const ProjectProps = [
             {
                 source: Boolean(document.documentMode) ? './Database Icon.png' : './Table database.svg',
                 header_text: 'NBA Records Database',
-                class: Boolean(document.documentMode) ? 'd-none d-md-block d-lg-none mw-60' : false
+                class: Boolean(document.documentMode) ? 'd-none d-md-block d-lg-none mw-50' : false
             },
             {
                 source: './Database Icon.png',
@@ -202,7 +202,7 @@ class Section extends Component {
         console.log(props.class);
         return (
             <img src={props.source}
-            className={`mw-70 mx-auto ${(props.class) ? props.class : class_name} 
+            className={`mw-90 mx-auto ${(props.class) ? props.class : class_name} 
                         ${(props.header_text === 'NBA Records Database') ? 'my-2 my-md-3' : 
                           (props.header_text === 'Tic Tac Toe') ? 'my-2' : 'my-0 '}
                         my-lg-0`} key={index} alt='Image not available'/>
@@ -224,11 +224,6 @@ class Section extends Component {
                             return this.image(prop, `${prop.source.replace('./', '').replace(/(.|\\|\/)\s*/g, '-')}_${index + 1}`);
                         })
                     }
-                    {/* <img src={this.props.img_src} id={`${this.props.header_text.replace(/\s+/g, '-')}-sm`}
-                        className={`mw-70 mx-auto 
-                                   ${(this.props.header_text === 'NBA Records Database') ? 'my-2 my-md-3' : 
-                                     (this.props.header_text === 'Tic Tac Toe') ? 'my-2' : 'my-0 '}
-                                   my-lg-0`}/> */}
                 </div>
                 <div className={`col-12 col-${(this.props.header_text === 'Tic Tac Toe') ? 'lg' : 'lg'}-6 d-flex
                                  ${(this.props.left) ? 
