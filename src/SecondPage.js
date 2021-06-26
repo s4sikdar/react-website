@@ -5,7 +5,8 @@ import './Second Page.css';
 // import { SkillsChart } from './SkillsChart.js';
 // import { GoogleChart } from './GoogleChart.js';
 import { ChartComponent } from './ChartComponent.js';
-import { SagaComponent, SectionProps, FunnyText, TextSection } from './SagaComponent.js';
+import { TextSection } from './CommonUtilities.js';
+import { SagaComponent, SectionProps, FunnyText } from './SagaComponent.js';
 
 // google.charts.load('current', {packages: ['corechart']});
 

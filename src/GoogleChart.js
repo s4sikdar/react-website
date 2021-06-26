@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
 import './Second Page.css';
-import { TextSection } from './SagaComponent.js';
+import { TextSection, H4Tag } from './CommonUtilities.js';
 import {disclaimer_text} from './SkillsChart.js';
-// import './Text Formatting and Styling.css';
 
-// const loadScript = (src, id) => {
-//     return new Promise((resolve, reject) => {
-//         let new_script = document.createElement('script');
-//         new_script.src = src;
-//         new_script.id = id;
-//         new_script.type = "text/javascript";
-//         document.body.appendChild(new_script);
-//         new_script.onload = () => {
-//             resolve();
-//         }
-//         new_script.onerror = () => {
-//             reject();
-//         }
-//     });
-// }
+// The configuration options for the h4 tag that tells you how to use the chart
+const Instructions = {
+    class: 'text-center pt-3 my-0 chart-heading',
+    text: 'Click a section for more info, click it again for less.'
+}
 
 class GoogleChart extends Component {
     constructor(props) {
@@ -27,9 +16,10 @@ class GoogleChart extends Component {
             height: Math.round(Math.min(((window.innerWidth * 0.8)),((window.innerHeight * 0.8))))
         }
         this.bottom = this.bottom.bind(this);
-        this.optimal_chart_area = this.optimal_chart_area.bind(this);
-        this.chart_div_ref = React.createRef();
-        this.resizeHandler = this.resizeHandler.bind(this);
+        // this.optimal_chart_area = this.optimal_chart_area.bind(this);
+        // this.chart_div_ref = React.createRef();
+        // this.resizeHandler = this.resizeHandler.bind(this);
+        this.load_google_charts_api = this.load_google_charts_api.bind(this);
     }
 
     bottom() {
@@ -38,25 +28,28 @@ class GoogleChart extends Component {
                  (window.innerWidth < 1100) ? 50 : 55);
     }
 
-    optimal_chart_area() {
-        var chart_area = {
-            top: this.bottom(),
-            bottom: Math.round(window.innerHeight * ((window.innerWidth < 1000) ? 0.0075 : 0.015)),
-        };
+    // optimal_chart_area() {
+    //     var chart_area = {
+    //         top: this.bottom(),
+    //         bottom: Math.round(window.innerHeight * ((window.innerWidth < 1000) ? 0.0075 : 0.015)),
+    //     };
       
-        return chart_area;
-    }
+    //     return chart_area;
+    // }
 
-    resizeHandler() {
-        this.setState(state => {
-            console.log(window.innerWidth * 0.8, window.innerHeight * 0.8);
-            return {
-                height: Math.round(Math.min(((window.innerWidth * 0.8)),((window.innerHeight * 0.8))))
-            }
-        });
-    }
+    // resizeHandler() {
+    //     this.setState(state => {{
+    //             height: Math.round(Math.min(((window.innerWidth * 0.8)),((window.innerHeight * 0.8))))
+    //     }});
+    // }
 
-    componentDidMount() {
+    /*
+    Load the js file responsible for setting up/loading the GoogleCharts API and then drawing
+    the chart. The Google Charts API requires that you have an empty div with an id specified
+    so that the API can target it. So we render the div with id="chart_div" first, and once
+    that is loaded, you can load the JS file that loads and uses the API to draw the chart. 
+    */
+    load_google_charts_api() {
         let script_tag = document.createElement('script');
         script_tag.type = "text/javascript";
         script_tag.id = 'google_chart_logic_file';
@@ -64,12 +57,14 @@ class GoogleChart extends Component {
         document.body.appendChild(script_tag);
     }
 
+    componentDidMount() {
+        this.load_google_charts_api();
+    }
+
     render() {
         return (
             <div className = 'w-100 h-100 m-0 p-0 d-none d-md-block'>
-                <h4 className="text-center pt-3 my-0 chart-heading">
-                    Click a section for more info, click it again for less.
-                </h4>
+                <H4Tag {...Instructions} />
                 <TextSection {...disclaimer_text} />
                 <div id = "chart_div" className = 'w-100 m-0 p-0 GoogleCharts'>
                 </div>

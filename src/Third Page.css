@@ -26,6 +26,14 @@ found here: https://stackoverflow.com/questions/20541306/how-to-write-a-css-hack
         position: relative;
         bottom: -1em;
     }
+
+    /* 
+    In I.E. 11, the icons class doesn't apply on the linkedin icon that shows on mobile devices (width <= 576px)
+    */
+    *::-ms-backdrop, :root #mobile_linkedin {
+        font-size: 20vw;
+        color: #353535;
+    }
 }
 
 /* 

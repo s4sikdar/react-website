@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Text Formatting and Styling.css';
 import './Second Page.css';
+import {TextSection} from './CommonUtilities.js'; 
 require('intersection-observer');
 
 const SectionProps = [
@@ -212,46 +213,7 @@ const SectionProps = [
     }
 ];
 
-const FunnyText = props => 
-                props.link ? 
-                <a href={props.link} target={props.target || null} className = {` ${(props.class) ? props.class : ''}`}>
-                    {
-                        props.text
-                    }
-                </a> :
-                <span className = {` ${(props.class) ? props.class : ''}`}>
-                    {
-                        props.text
-                    }
-                </span>
-
-const TextSection = props => {
-    return(
-        <p className={`${(props.paragraph_classname) ? props.paragraph_classname : '' }`}>
-            {
-                props.text_lines.map((line, index) => {
-                    return(
-                        <React.Fragment key={`Line_${index + 1}`}>
-                            {line}
-                            {
-                                (index < (props.text_lines.length - 1)) ?
-                                (props.links[index].last) ? 
-                                <React.Fragment>
-                                    <br />
-                                    <FunnyText {...props.links[index]}/>
-                                </React.Fragment> :
-                                <FunnyText {...props.links[index]}/> :
-                                null
-                            }
-                        </React.Fragment>
-                    )
-                })
-            }
-        </p>
-    );
-}
-
-const Header = props => <h5 className='opaque'>{props.header}</h5>
+const OpaqueHeader = props => <h5 className='opaque'>{props.header}</h5>
 
 
 class Section extends Component {
@@ -269,7 +231,7 @@ class Section extends Component {
                     'col-6 left_side d-none d-xl-block pr-2' : 
                     (this.props.odd) ? 'right_side d-block d-xl-none' : 'right_side'}`} 
                 id = {`${this.props.month}_${(this.props.left) ? 1 : 2}`}>
-                <Header header={this.props.header} />
+                <OpaqueHeader header={this.props.header} />
                 <TextSection {...this.props} />
             </div>
         );
@@ -307,46 +269,7 @@ class Saga extends Component {
         this.mutation_observer_options = {
             attributeFilter: ['class']
         }
-        // this.inside_intersection = this.inside_intersection.bind(this);
-        // this.saga_mutation_callback = this.saga_mutation_callback.bind(this);
     }
-
-    // saga_mutation_callback(entries, observer) {
-    //     var target_elem = entries[0].target;
-    //     var animate_divs = target_elem.querySelectorAll(".inner_divs");
-    //     // If the target element is the last section of the accordion
-    //     if (target_elem.id == "collapseTHREE") {
-    //         // Then check the classname, and accordingly observe all the tags with the
-    //         // class inner_divs.
-    //         if (target_elem.className.includes("show")) {
-    //             for (var index = 0; index < animate_divs.length; index++) {
-    //                 timeline_observer.observe(animate_divs[index]);
-    //             }
-    //         } else {
-    //             // Some bugs stem in terms of what gets slid in first the next time around
-    //             // if we don't unobserve when this section slides back up.
-    //             for (var index = 0; index < animate_divs.length; index++) {
-    //                 timeline_observer.unobserve(animate_divs[index]);
-    //             }
-    //         }
-    //     } else {
-    //         // If the button being pressed opens that section of the accordion instead of
-    //         // closing it, set the elements with class "inner_divs" to be opaque.
-    //         if (target_elem.className.includes("show")) {
-    //             // Bugs happen when we don't unboserve when a new accordion box is opened.
-    //             for (var index = 0; index < animate_divs.length; index++) {
-    //                 animate_divs[index].children[0].setAttribute("class", "opaque");
-    //                 animate_divs[index].children[1].setAttribute("class", "opaque");
-    //                 timeline_observer.unobserve(animate_divs[index]);
-    //             }
-    //         }
-    //     }
-    // }
-
-    // componentDidMount() {
-        // console.log(this.current.parentNode);
-        // console.log('Saga component mounted');
-    // }
 
     render() {
         return(
@@ -379,7 +302,6 @@ class SagaComponent extends Component {
             threshold: 0.5
         };
         this.observer = new MutationObserver(this.observerCallback);
-        // this.saga_component_ref = React.createRef();
         this.timeline_observer = new IntersectionObserver(this.inside_intersection,
                                                           this.intersection_observer_options);
         this.saga_observer = new MutationObserver(this.saga_observer_callback);
@@ -392,56 +314,9 @@ class SagaComponent extends Component {
         } else if (target.className.includes('collapse')) {
             this.div_ref.current.previousElementSibling.querySelector('button').disabled = false;
         }
-
-        // // If the target element is the last section of the accordion
-        // if (target.id === 'collapse_5') {
-        //     // Then check the classname, and accordingly observe all the tags with the
-        //     // class inner_divs.
-        //     if (target.className.includes("show")) {
-        //         animate_divs.forEach(element => {
-        //             this.timeline_observer.observe(element);
-        //         });
-        //     } else {
-        //         // Some bugs stem in terms of what gets slid in first the next time around
-        //         // if we don't unobserve when this section slides back up.
-        //         animate_divs.forEach(element => {
-        //             this.timeline_observer.unobserve(element);
-        //         });
-        //     }
-        // } else {
-        //     // If the button being pressed opens that section of the accordion instead of
-        //     // closing it, set the elements with class "inner_divs" to be opaque.
-        //     if (target_elem.className.includes("show")) {
-        //         // Bugs happen when we don't unboserve when a new accordion box is opened.
-        //         animate_divs.forEach(element => {
-        //             element.children[0].className = 'opaque';
-        //             element.children[1].className = 'opaque';
-        //             this.timeline_observer.unobserve(element);
-        //         });
-        //     }
-        // }
     }
 
     inside_intersection(entries, observer) {
-        // for (var i = 0; i < (entries.length); i++) {
-        //     let target_class = entries[i].target.getAttribute("class");
-        //     let header_class = entries[i].target.children[0].getAttribute("class");
-
-        //     if (entries[i].isIntersecting) {
-        //         if ((entries[i].intersectionRatio >= 0.5) && (header_class == "opaque")) {
-        //             if (target_class.includes("right_side")) {
-        //                 entries[i].target.children[0].setAttribute("class", "slide_left");
-        //                 entries[i].target.children[1].setAttribute("class", "slide_left");
-        //             } else {
-        //                 entries[i].target.children[0].setAttribute("class", "slide_right");
-        //                 entries[i].target.children[1].setAttribute("class", "slide_right");
-        //             }
-        //             // If the entry is intersecting, then toggle the right class on and
-        //             // unobserve the entry
-        //             observer.unobserve(entries[i].target);
-        //         }
-        //     }
-        // }
         entries.forEach(entry => {
             let target = entry.target;
             let target_class = target.className;
@@ -464,23 +339,16 @@ class SagaComponent extends Component {
         let target = entries[0].target;
         let animate_divs = this.div_ref.current.querySelectorAll(".inner_divs");
         let internet_explorer = Boolean(document.documentMode);
-        // console.log(target);
-        // console.log(typeof(entries[0].oldValue), entries[0].oldValue);
-        // console.log(animate_divs[0].childNodes);
         if (entries[0].oldValue === 'true') {
             animate_divs.forEach(element => {
-                // if (!internet_explorer) {
                 element.children[0].setAttribute('class', 'opaque');
                 element.children[1].setAttribute('class', 'opaque');
-                // }
                 this.timeline_observer.unobserve(element);
             });
         } else {
             animate_divs.forEach(element => {
-                // if (!internet_explorer) {
                 element.children[0].setAttribute('class', 'opaque');
                 element.children[1].setAttribute('class', 'opaque');
-                // }
                 this.timeline_observer.observe(element);
             });
         }
@@ -511,4 +379,4 @@ class SagaComponent extends Component {
     }
 }
 
-export { SagaComponent, SectionProps, TextSection, FunnyText };
+export { SagaComponent, SectionProps };

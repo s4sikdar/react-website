@@ -1,8 +1,11 @@
 import Chart from 'chart.js';
 import React, { Component } from 'react'
 import './Second Page.css';
-import { TextSection } from './SagaComponent.js';
+import { TextSection, H4Tag } from './CommonUtilities.js';
 
+/*
+The classes responsible for the disclaimer text that you see under the chart.
+*/
 const disclaimer_text = {
     paragraph_classname: 'text-center my-1 pb-0 d-none d-md-block',
     links: [
@@ -27,13 +30,18 @@ const disclaimer_text = {
     ]
 }
 
+/*
+The configuration options required for the Chart created by ChartJS. Since the Google Charts API
+is known not to work on laptops that use HiDPI screens, you need to have a chart that works there.
+So I use ChartJS as a default, and on I.E. 11 I use the GoogleCharts API.
+*/
 const ConfigurationOptions = {
     type: 'pie',
     data: {
         labels: ['Python', 'HTML, CSS, JavaScript', 'REACTjs', 'SQL/SQLite3', 'Git/GitHub', 'Bootstrap', 'Django'],
         datasets: [{
             data: [10, 8, 3, 2, 2, 3, 3],
-            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146', '#AD7C59'] // AF8661 a67556
+            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146', '#AD7C59']
         }]
     },
     options: {
@@ -112,64 +120,49 @@ const ConfigurationOptions = {
                                 'functions.'
                             ]
                     }
-                    // return skill_label + ': I learned this skill'
                 }
             }
         }
     }
 };
 
+const Instructions = {
+    class: 'text-center pt-0 pb-1 my-0 chart-heading',
+    text: 'Hover over/touch a section for more info, touch off it for less.'
+}
+
 class SkillsChart extends Component {
     constructor(props) {
         super(props);
-        // this.myRef = React.createRef();
-        // this.resizeHandler = this.resizeHandler.bind(this);
         this.state = {
-            previous_width: 575
-            // new_width: null
+            chart_width_and_height: 575
         };
-        // this.state
     }
 
     componentDidMount() {
-        // console.log('In script tag rendering google chart js logic file')
-        // let script_tag = document.createElement('script');
-        // script_tag.type = "text/javascript";
-        // script_tag.id = 'google_chart_logic_file';
-        // script_tag.src = "./ChartRenderingLogic.js";
-        // document.body.appendChild(script_tag);
-        // script_tag.onload = () => {
+        // What we need to do to actually render the Chart.
         const PieChart = document.querySelector('#myChart');
-        // try {
-        //     throw new Error('Pie Chart did not work');
         this.SkillsPieChart = new Chart(PieChart.getContext('2d'), ConfigurationOptions);
-        // } catch (err) {
-        //     console.log('In error:', err);
-        //     document.querySelector('#chart_div').setAttribute('class', 'position-relative ChartJsError');
-        // }
-        // }
-        // PieChart.parentNode.style.width = '800px';
-        // PieChart.parentNode.style.height = '800px';
-        // console.log(PieChart.width, PieChart.height);
-        
-        // document.querySelector('.chart-header').innerHTML=SkillsPieChart.generateLegend();
     }
-    // w-75
-    render() {//w-75 h-50 onResize={this.resizeHandler}
+
+    render() {
         return (
             <div className='d-none d-md-block'>
-                {/* <div className='chart-header w-100'></div> */}
-                <h4 className="text-center pt-0 pb-1 my-0 chart-heading">
-                    Hover over/touch a section for more info, touch off it for less.
-                </h4>
+                <H4Tag {...Instructions}/>
                 <TextSection {...disclaimer_text} />
+                {/* 
+                The ChartJS library requires you use a div with a canvas element. This is why I
+                use the Google Charts API in I.E. 11 (I.E. doesn't like canvas).
+                */}
                 <div ref = {this.props.ref_prop} id='chart_div' className='position-relative'>
-                    <canvas id='myChart' width={`${this.state.previous_width}`} height={`${this.state.previous_width}`}>
+                    <canvas 
+                        id='myChart' 
+                        width={`${this.state.chart_width_and_height}`} 
+                        height={`${this.state.chart_width_and_height}`}>
                     </canvas>
                 </div>
             </div>
         )
-        // 
     }
 }
 

@@ -196,10 +196,7 @@ class Section extends Component {
     
     image(props, index) {
         let class_name = props.source.replace('./', '');
-        console.log(props.source, class_name);
         class_name = class_name.replace(/[.\/\s*]/g, '-');
-        console.log(props.source, class_name);
-        console.log(props.class);
         return (
             <img src={props.source}
             className={`mw-90 mx-auto ${(props.class) ? props.class : class_name} 
@@ -209,8 +206,6 @@ class Section extends Component {
         );
     }
     
-    // ${(this.props.header_text === 'Tic Tac Toe') ?
-    // project ${this.props.last_card ? 'last-project' : ''}
     render() {
         return(
             <div className={`project ${this.props.last_card ? 'last-project' : ''} 
