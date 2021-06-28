@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { IconTag } from './CommonUtilities.js';
 import { Tooltip } from 'reactstrap';
 
+
 /* 
 The classes responsible for the icons that show.
 Font Awesome and Material Icons are used for this, and they
@@ -55,6 +56,7 @@ const IconProps = [
     }
 ];
 
+
 /* 
 The Icon component responsible for the icon you see on the front page, and the tooltip that shows when hovering
 over the icon.
@@ -64,14 +66,6 @@ const Icon = props => {
     const toggle = () => setTooltipOpen(!tooltipOpen);
     return (
         <React.Fragment>
-            {/* 
-            The icon responsible for 
-            */}
-            {/* <i className = {props.classname_outer} id = {(id === 'Gmail') ? 'outer-italic-tag' : ''}>
-                <a target = "_blank" rel="noreferrer" className = {props.link_classname} href = {props.link} id = {id}>
-                    
-                </a>
-            </i> */}
             <IconTag {...props} rel="noreferrer" target="_blank">
                 {
                     (props['link_tag'].id === 'Gmail') ? 
@@ -98,10 +92,8 @@ const Icon = props => {
 
 /*
 This is the div that is responsible for the front page of the site.
-The h1 tag is what has my name, an the second div nested inside stores the icons.
 Since I make use of the bootstrap grid sytems, there are a couple of nested divs:
-the container-fluid div, then the row div, then the column div. Inside is another
-row div which has the icons.  
+the container-fluid div, then the row div, then the column div.
 */
 const MainPage = props => {
     return (
@@ -127,5 +119,6 @@ const MainPage = props => {
         </div>
     )
 };
+
 
 export { MainPage };

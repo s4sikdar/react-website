@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import './Second Page.css';
 import { TextSection, H4Tag } from './CommonUtilities.js';
 
+
 /*
 The classes responsible for the disclaimer text that you see under the chart.
 */
@@ -11,15 +12,15 @@ const disclaimer_text = {
     links: [
         {
             text: '*',
-            class: 'font-weight-bold'
+            class_name: 'font-weight-bold'
         },
         {
             text: 'Disclaimer: ',
-            class: 'font-weight-bold'
+            class_name: 'font-weight-bold'
         },
         {
             text: '*',
-            class: 'font-weight-bold'
+            class_name: 'font-weight-bold'
         }
     ],
     text_lines: [
@@ -29,6 +30,7 @@ const disclaimer_text = {
         ''
     ]
 }
+
 
 /*
 The configuration options required for the Chart created by ChartJS. Since the Google Charts API
@@ -58,51 +60,52 @@ const ConfigurationOptions = {
                         case 'Python':
                             return [
                                 'Python - my \"mother tongue\" of programming',
-                                'languages. It was the first practical language I', 
-                                'learned to code in, the one I made my first', 
+                                'languages. It was the first practical language', 
+                                'I learned to code in, the one I made my first', 
                                 'project in, and the one I\'d answer technical',
                                 'interviews with. It\'s the main language I use',
                                 'at work.'
                             ]
                         case 'HTML, CSS, JavaScript': 
                             return [
-                                'At the advice of a friend, I started learning',
-                                'the basics of web development around last April ',
+                                'At the advice of a friend, I started learning the',
+                                'basics of web development around last April',
                                 '2020. I\'d say I\'ve gotten to be passable in it,',
-                                'and jave gone on to learn REACTjs over the past',
-                                'winter.'
+                                'and have gone on to learn REACTjs over the',
+                                'past winter.'
                             ]
                         case 'REACTjs':
                             return [
-                                'I\'ve been learning the basics of REACTjs ',
-                                'over the last couple of months, starting around ',
-                                'the end of December/start of January. I\'m ',
-                                'familiar with the basics of components, and I ',
-                                'understand a little about state and the component ',
-                                'lifecycle as well (not much though). I recreated',
-                                'this site in REACTjs mainly as an exercise.'
+                                'I\'ve been learning the basics of REACTjs over',
+                                'the last couple of months, starting around the',
+                                'end of December/start of January. I\'m familiar',
+                                'with the basics of components, and understand',
+                                'a little about state and the component lifecycle',
+                                'as well (not much though). I recreated this site',
+                                'in REACTjs as an exercise.'
                             ]
                         case 'SQL/SQLite3':
                             return [
-                                'I started learning this as part of a school',
-                                'course I took in relational databases - google ',
-                                '"CS 338 UWaterloo". I learned the basics of SQL ',
-                                'queries using the SQLite3 DBMS. I covered some ',
-                                'basics on normal forms, relational models, and ',
-                                'the E.R. model - but this was back in the ',
-                                'summer of 2020. I\'ve since used it for one of ',
-                                'my projects. I\'ve also been using the MySQL ',
-                                'command line a little at work, mainly doing ',
-                                'basic C.R.U.D. statements to check that my ',
-                                'server-side code works correctly.'
+                                'I started learning SQL as part of a school course',
+                                'I took in relational databases - google "CS 338',
+                                'UWaterloo". I learned the basics of SQL queries',
+                                'using the SQLite3 DBMS. I then covered some ',
+                                'basics on normal forms, relational models, and',
+                                'the E.R. model - but this was back in the summer',
+                                'of 2020. I\'ve since used it for one of my ',
+                                'side-projects. I\'ve also been using MySQL a little',
+                                'at work through the command line, only doing',
+                                'basic Create, Read, Update and Delete',
+                                'statements to check that my server-side code',
+                                'works correctly.'
                             ]
                         case 'Git/GitHub':
                             return [
-                                'I learned Git at the advice of a friend, starting ',
-                                'out by tracking my projects with it to save myself ',
-                                'from having 10 copies of the same code in different ',
-                                'file directories. I use Git and GitHub extensively ',
-                                'at work.'
+                                'I learned Git at the advice of a friend, starting',
+                                'out by tracking my projects with it to save',
+                                'myself from having 10 copies of the same',
+                                'code in different directories. I mainly use Git',
+                                'and GitHub for version control at work.'
                             ]
                         case 'Bootstrap':
                             return [
@@ -115,9 +118,8 @@ const ConfigurationOptions = {
                             return [
                                 'One of the applications that I\'ve been working on ',
                                 'at my internship is a Django applicaton, I\'ve done ',
-                                'a little of various things in Django - from ',
-                                'templating, to model querying, to view handling ',
-                                'functions.'
+                                'a little of various things in Django - from templating,',
+                                'to model querying, to view handling functions.'
                             ]
                     }
                 }
@@ -126,11 +128,18 @@ const ConfigurationOptions = {
     }
 };
 
+
+// Used as properties for the h4 tag
 const Instructions = {
-    class: 'text-center pt-0 pb-1 my-0 chart-heading',
-    text: 'Hover over/touch a section for more info, touch off it for less.'
+    class_name: 'text-center pt-0 pb-1 my-0 chart-heading',
+    text: 'Hover over/touch a section for more info, touch off it for less'
 }
 
+
+/*
+Sine we can only render the pie chart after it has been rendered, I
+chose to use a class component for this.
+*/
 class SkillsChart extends Component {
     constructor(props) {
         super(props);
@@ -165,5 +174,6 @@ class SkillsChart extends Component {
         )
     }
 }
+
 
 export { SkillsChart, disclaimer_text };

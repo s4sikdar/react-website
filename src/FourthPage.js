@@ -1,15 +1,15 @@
+/**
+ * This is code for the fourth page that is only on mobile.
+ */
 import React, { Component } from 'react';
 import { Icon, InlineIcon } from '@iconify/react';
 import gmailIcon from '@iconify-icons/mdi/gmail';
 import './Text Formatting and Styling.css';
 import './Third Page.css';
-import { IconTag } from './CommonUtilities.js';
+import { IconTag, SectionHeader } from './CommonUtilities.js';
 
-const Text = {
-    header: 'Contact',
-    text: 'Thanks for stopping by! Contact me via any of the following - my email is saileshsikdar1@gmail.com'
-}
 
+// Properties that go on the icon tags at the bottom
 const Links = [
     {
         italic_tag: {
@@ -34,17 +34,21 @@ const Links = [
     }
 ]
 
-const ContactHeader = props => <h1 className='text-center w-100 p-0 page-headers pb-0 pt-3 mb-0 header-font font-weight-bold'>{props.header}</h1>
-const ContactText = props => <p className='px-4 text-center my-0 w-100 card-body pb-0 pt-1'>{props.text}</p>
 
+/**
+ * Used for the text shown on the fourth page under the header.
+ */
+const ContactText = props => 
+                    <p className='px-4 text-center my-0 w-100 card-body pb-0 pt-1 about-paragraph'>
+                        {props.children}
+                    </p>
+
+
+/**
+ * Used for the icons.
+ */
 const Link = props => {
     return(
-        // <i className = {`${(props.id.includes('linkedin')) ? 'mr-5' : ''}`}>
-        //     <a 
-        //         target='_blank'
-        //         id={props.id}
-        //         className={props.class}
-        //         href={props.link}>
         <IconTag {...props} target='_blank'>
             {
                 props['link_tag'].id.includes('linkedin') ?
@@ -52,11 +56,17 @@ const Link = props => {
                 <Icon icon={gmailIcon} />
             }
         </IconTag>
-        //     </a>
-        // </i>
     )
 }
 
+
+/**
+ * We use this div as a flexbox container for the links (the link component above), so we 
+ * get vertically and horizontally centered icons. This puts them in the center, and you 
+ * can space them further apart using margin clases, which I did. The icons don't line up
+ * perfectly still vertically, so I have to apply some custom styling using their ids
+ * attributes.
+ */
 const IconMenu = props => {
     return(
         <div className='d-flex d-md-none justify-content-center align-items-center mx-auto mh-25'>
@@ -67,16 +77,25 @@ const IconMenu = props => {
     )
 }
 
+
+/**
+ * What we render in the end to an html div using React's render method
+ */
 class FourthPage extends Component {
     render() {
         return (
             <div className = 'd-block d-sm-none p-0 light'>
-                <ContactHeader {...Text} />
-                <ContactText {...Text} />
+                <SectionHeader class_name='pb-0 pt-3 mb-0'>
+                    Contact
+                </SectionHeader>
+                <ContactText>
+                    Thanks for stopping by! Contact me via any of the following - my email is saileshsikdar1@gmail.com.
+                </ContactText>
                 <IconMenu />
             </div>
         )
     }
 }
+
 
 export { FourthPage };

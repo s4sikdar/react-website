@@ -228,7 +228,11 @@ Max width on images that are shown in the Projects section
     font-size: 7vw;
   }
 
+  .saga-header {
+    font-size: 5.5vw;
+  }
+
   .project-paragraph, .about-paragraph, .saga-paragraphs {
-    font-size: 5.2vw;
+    font-size: 5vw;
   }
 }

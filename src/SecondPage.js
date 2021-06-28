@@ -2,21 +2,40 @@ import React, { Component } from 'react';
 import './Navbar.css';
 import './Text Formatting and Styling.css';
 import './Second Page.css';
-// import { SkillsChart } from './SkillsChart.js';
-// import { GoogleChart } from './GoogleChart.js';
 import { ChartComponent } from './ChartComponent.js';
-import { TextSection } from './CommonUtilities.js';
+import { TextSection, SectionHeader } from './CommonUtilities.js';
 import { SagaComponent, SectionProps, FunnyText } from './SagaComponent.js';
 
-// google.charts.load('current', {packages: ['corechart']});
 
+/*
+Each accordion section uses a CardHeader Component and a CardBody Component. An accordion is made
+up of multiple cards, each with a card header and a body (where the text lies). See here for example:
+https://getbootstrap.com/docs/4.3/components/collapse/#accordion-example
+It's intuitive to break up the header and the body into their own components - the "CardHeader"
+and "CardBody" components respectively. These combine to create a "Card" component, and there are
+multiple "Card" components in the Accordion, which make up the Accordion component. This is used
+in the "SecondPage" component for the second page. This may be subject to refactoring in the future.
+
+The props are set as follows below. 
+1) title - heading of the section
+2) text_lines - the lines of the text used in the "TextSection" component. The text lines are exchanged
+with an item from the array represented by the "links" property.
+3) links - these represent inline tags used in the paragraph tag. Each object literal makes up the
+properties for one inline tag. The properties are as follows:
+    a) text - the text to fill the tag
+    b) class - the class used in the class attribute
+    c) last - if true, then add a br tag before the next set of span and text tags
+    d) link - if specified, render a link tag and this is where it goes
+4) expanded - if true, then this section will be expanded.
+5) chart - if true, then this is where you render the chart component
+6) saga - if true, then this is where you render the saga component
+*/
 const AccordionProps = [
     {
         title: 'About Me',
-        parent_id: 'Accordion',
         text_lines: [
             'Hi, I\'m Sailesh Sikdar, and I\'m a University of Waterloo student going into my fourth year studying Math and \
-            Business Administration. Though not mainly in my major, I\'ve grown to have an interest in Software Development \
+            Business Administration. Though not related to my major, I\'ve grown to have an interest in Software Development \
             and am currently doing a Back-End Software Development internship at Cisco Systems. I\'m hoping to make it a \
             full-time job one day. On the side, I\'ve taken some time to learn front-end facing languages and technologies, \
             and could grow to work in Front-End, Back-End, or even Automation Testing. The question is ',
@@ -28,25 +47,23 @@ const AccordionProps = [
         links: [
             {
                 text: 'which',
-                class: 'font-italic'
+                class_name: 'font-italic'
             },
             {   
                 last: true,
                 text: 'TL;DR',
-                class: 'spaced-link header-font font-weight-bold'
+                class_name: 'spaced-link header-font font-weight-bold'
             }
         ],
         expanded: false
     },
     {
         title: 'Interests',
-        parent_id: 'Accordion',
         text_lines: [
             'In my spare time, I\'ve had varous interests here and there. For starters, am someone who has an \
-            interest in Finance and Investments, it being one of my favourite topics in school. I play/follow \
-            basketball as well (in a Covid-free world I\'d be on the court), and ', 
-            ' happen to be a Washington \
-            Wizards fan. I also spend too much time on TV shows. If it helps, I\'ve gone through \
+            interest in Finance and Investments, it being one of my favoured topics in school. I play/follow \
+            basketball as well, and ',
+            ' happen to be a Washington Wizards fan. Some of the TV Shows I\'ve seen are \
             The Office, Modern Family and Suits.',
             ' I have an interest in Finance and Investments, I play and follow basketball on my spare time, and I \
             watch too much Netflix.'
@@ -55,40 +72,77 @@ const AccordionProps = [
         links: [
             {
                 text: 'sadly',
-                class: 'text-decoration-line-through'
+                class_name: 'text-decoration-line-through'
             },
             {
                 last: true,
                 text: 'TL;DR',
-                class: 'spaced-link header-font font-weight-bold'
+                class_name: 'spaced-link header-font font-weight-bold'
             }
         ],
         expanded: false
     },
     {
         title: 'Relative Skills',
-        parent_id: 'Accordion',
         expanded: true,
         chart: true
-        // googleChart: true
     },
     {
         title: 'The Saga So Far',
-        parent_id: 'Accordion',
         expanded: false,
         saga: true
     }
 ];
 
+
+/*
+Why is the "CardHeader" component a class component?
+
+When I was designing this site in plain HTML, CSS and JavaScript (https://s4sikdar.github.io/new_old_website/index.html)
+there was an issue with the accordion. I designed it a little differently so as to have a heading on the left and
+a button on the right. There would be a couple of elements on the UI that would change when the accordion opens
+and closes (the button and the border property on the bottom of the card header). The problem here is that you
+can't use click event listeners for this alone. This is because if someone double clicks, then changes that should
+be done once when a section opens or closes can be done twice. So if you have a plus sign to open the accordion
+section when it's closed, and a minus sign for when the section is open and you want to close it, then double-clicking
+the button could leave you with a plus sign when the accordion section is open and you want to close it, and a minus
+sign for when the accordion section is closed and you want to open it.
+
+What should happen normally:
+ ---------------------------
+| Heading                 + |
+ ---------------------------
+
+ ---------------------------
+| Heading                 - |
+ ---------------------------
+| blah blah ............... |
+ ---------------------------
+
+What happens if you double click:
+ ---------------------------
+| Heading                 - |
+ ---------------------------
+
+ ---------------------------
+| Heading                 + |
+ ---------------------------
+| blah blah ............... |
+ ---------------------------
+
+So to solve this problem what you want to do is find some attribute that only changes when the accordion
+section opens or closes, and "listen" to the change of this attribute. Accordingly adjust the state, and thus
+adjust the UI elements that should change. This attribute in my case is the "aria-expanded" attribute. I use
+the mutation observer API to listen to the change of this attribute, and accordingly change the state. Details
+on the mutation observer api are found here: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+*/
 class CardHeader extends Component  {
     constructor(props) {
         super(props);
         this.state = {
             expanded: this.props.expanded,
         };
-        // this.clickHandler = this.clickHandler.bind(this);
         this.observerCallback = this.observerCallback.bind(this);
-        // this.dblClickHanler = this.dblClickHanler.bind(this);
         this.observer_options = {
             attributes: true,
             attributeFilter: ['aria-expanded'],
@@ -139,78 +193,52 @@ class CardHeader extends Component  {
     }
 }
 
-class CardBody extends Component {
-    constructor(props) {
-        super(props);
-        this.observerCallback = this.observerCallback.bind(this);
-        this.div_ref = React.createRef();
-        this.observer_options = {
-            attributes: true,
-            attributeFilter: ['class'],
-        };
-        this.observer = new MutationObserver(this.observerCallback);
-    }
 
-    observerCallback(entries, observer) {
-        let target = entries[0].target;
-        if (target.className.includes('collapsing')) {
-            this.div_ref.current.previousElementSibling.querySelector('button').disabled = true;
-        } else if (target.className.includes('collapse')) {
-            this.div_ref.current.previousElementSibling.querySelector('button').disabled = false;
-        }
-    }
-
-    componentDidMount() {
-        try {
-            this.observer.observe(this.div_ref.current, this.observer_options);
-        } catch(err) {
-            console.log(this.div_ref.current);
-        }
-        
-    }
-
-    render() {
-        return (
-            <div
-                ref = {this.div_ref}
-                className={`light collapse ${this.props.expanded ? 'show' : ''}
-                ${this.props.saga ? 'px-xs-0 px-sm-1 px-xl-0': ''}`}
-                id = {this.props.target_id} aria-labelledby={this.props.controller_id}
-                data-parent={`#${this.props.parent_id}`}
-                >
-                <div className={`card-body light ${(this.props.chart) ? 'container-fluid pt-0' : ''} 
-                ${this.props.saga ? 'pb-0' : ''} about-paragraph`}
-                id={this.props.saga ? 'saga-container' : null}>
-                    {
-                        (this.props.chart) ? 
-                        <ChartComponent observer_options={this.observer_options} /> :
-                        <TextSection {...this.props} />
-                    }
-                </div>
-            </div>
-        );
-    }
-}
-
-class Card extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className={`card w-100 dark-after dark-before ${(this.props.last_card) ? 'last-card' : ''} border-0`}>
-                <CardHeader {...this.props}/>
+/*
+The CardBody referred to in the above comment. This component doesn't require state, thus is
+functional.
+*/
+const CardBody = props => {
+    return (
+        <div 
+            className={`light collapse ${props.expanded ? 'show' : ''}
+                        ${props.saga ? 'px-xs-0 px-sm-1 px-xl-0': ''}`}
+            id = {props.target_id} aria-labelledby={props.controller_id}
+            data-parent={`#${props.parent_id}`}>
+            <div className={`card-body light ${(props.chart) ? 'container-fluid pt-0' : ''} 
+                            ${props.saga ? 'pb-0' : ''} about-paragraph`}
+                id={props.saga ? 'saga-container' : null}>
                 {
-                    (this.props.saga) ? 
-                    <SagaComponent {...this.props}/> :
-                    <CardBody {...this.props}/>
+                    (props.chart) ? 
+                    <ChartComponent /> :
+                    <TextSection {...props} />
                 }
             </div>
-        );
-    }
+        </div>
+    )
 }
 
+
+/*
+This represents one section on the accordion.
+*/
+const Card = props => {
+    return(
+        <div className={`card w-100 dark-after dark-before ${(props.last_card) ? 'last-card' : ''} border-0`}>
+            <CardHeader {...props}/>
+            {
+                (props.saga) ? 
+                <SagaComponent {...props}/> :
+                <CardBody {...props}/>
+            }
+        </div>
+    )
+}
+
+
+/*
+Refer to the comments above for context on this component and the next one.
+*/
 const Accordion = props => {
     return (
             <div className='d-block col-11 col-sm-10 col-lg-9 mx-auto pb-2 pb-lg-1' id = 'Accordion'>
@@ -222,7 +250,8 @@ const Accordion = props => {
                                 controller_id = {`heading_${(index + 1)}`}
                                 target_id={`collapse_${(index + 1)}`}
                                 last_card = {((index + 1) == AccordionProps.length)}
-                                button_id={`button_${index + 1}`}/>
+                                button_id={`button_${index + 1}`}
+                                parent_id='Accordion'/>
                         );
                     })
                 }
@@ -230,25 +259,21 @@ const Accordion = props => {
     );
 }
 
-class SecondPage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
-    render() {
-        return (
-            <div className="w-100 d-block light m-0 pt-1 pb-lg-5 pb-4" id = "second_page">
-                <h1 className = "text-center w-100 p-0 page-headers mt-2 mb-sm-2 mb-md-3 mb-xl-4 header-font font-weight-bold">
-                    Background
-                </h1>
-                <div className="container-fluid w-100 px-0">
-                    <div className="row p-0 m-0">
-                        <Accordion {...AccordionProps} />
-                    </div>
+const SecondPage = props => {
+    return(
+        <div className="w-100 d-block light m-0 pt-1 pb-lg-5 pb-4" id = "second_page">
+            <SectionHeader class_name='mt-2 mb-sm-2 mb-md-3 mb-xl-4'>
+                Background
+            </SectionHeader>
+            <div className="container-fluid w-100 px-0">
+                <div className="row p-0 m-0">
+                    <Accordion {...AccordionProps} />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
+
 
 export { SecondPage, AccordionProps, ChartComponent };

@@ -3,45 +3,20 @@ import './Second Page.css';
 import { TextSection, H4Tag } from './CommonUtilities.js';
 import {disclaimer_text} from './SkillsChart.js';
 
+
 // The configuration options for the h4 tag that tells you how to use the chart
 const Instructions = {
-    class: 'text-center pt-3 my-0 chart-heading',
+    class_name: 'text-center pt-3 my-0 chart-heading',
     text: 'Click a section for more info, click it again for less.'
 }
 
+
+/* Responsible for the chart that uses the Google Charts API */
 class GoogleChart extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            height: Math.round(Math.min(((window.innerWidth * 0.8)),((window.innerHeight * 0.8))))
-        }
-        this.bottom = this.bottom.bind(this);
-        // this.optimal_chart_area = this.optimal_chart_area.bind(this);
-        // this.chart_div_ref = React.createRef();
-        // this.resizeHandler = this.resizeHandler.bind(this);
         this.load_google_charts_api = this.load_google_charts_api.bind(this);
     }
-
-    bottom() {
-        return  ((window.innerWidth < 900) ? 40 :
-                 (window.innerWidth < 1000) ? 45 : 
-                 (window.innerWidth < 1100) ? 50 : 55);
-    }
-
-    // optimal_chart_area() {
-    //     var chart_area = {
-    //         top: this.bottom(),
-    //         bottom: Math.round(window.innerHeight * ((window.innerWidth < 1000) ? 0.0075 : 0.015)),
-    //     };
-      
-    //     return chart_area;
-    // }
-
-    // resizeHandler() {
-    //     this.setState(state => {{
-    //             height: Math.round(Math.min(((window.innerWidth * 0.8)),((window.innerHeight * 0.8))))
-    //     }});
-    // }
 
     /*
     Load the js file responsible for setting up/loading the GoogleCharts API and then drawing
@@ -72,5 +47,6 @@ class GoogleChart extends Component {
         );
     }
 }
+
 
 export { GoogleChart };

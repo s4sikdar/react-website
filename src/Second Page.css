@@ -98,15 +98,15 @@ ___/ | \___
  //    \\
 */
 .half-star {
-    background: -moz-linear-gradient(right, #000 50%, #A9A9A9 50%);
-    background: -webkit-gradient(linear, right top, left top, color-stop(50%,black), color-stop(50%,#A9A9A9));
-    background: -webkit-linear-gradient(left, #000 50%, #A9A9A9 50%);
-    background: -o-linear-gradient(left, #000 50%, #A9A9A9 50%);
-    background: -ms-linear-gradient(left, #000 50%, #A9A9A9 50%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='#A9A9A9',GradientType=1 );
-    -ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='#A9A9A9',GradientType=1 );
-    background: linear-gradient(left, #000 50%, #A9A9A9 50%); 
-    background: linear-gradient(to right, black 50%, #A9A9A9 50%);
+    background: -moz-linear-gradient(right, #353535 50%, #A9A9A9 50%);
+    background: -webkit-gradient(linear, right top, left top, color-stop(50%,#353535), color-stop(50%,#A9A9A9));
+    background: -webkit-linear-gradient(left, #353535 50%, #A9A9A9 50%);
+    background: -o-linear-gradient(left, #353535 50%, #A9A9A9 50%);
+    background: -ms-linear-gradient(left, #353535 50%, #A9A9A9 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#A9A9A9',GradientType=1 );
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#A9A9A9',GradientType=1 );
+    background: linear-gradient(left, #353535 50%, #A9A9A9 50%); 
+    background: linear-gradient(to right, #353535 50%, #A9A9A9 50%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
