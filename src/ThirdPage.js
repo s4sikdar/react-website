@@ -92,11 +92,11 @@ const ProjectProps = [
         buttons: [
             {
                 text: 'Application',
-                link: 'https://s4sikdar.github.io/chrome_dino_run/Dino_game.html'
+                link: 'https://s4sikdar.github.io/new_old_website/chrome_dino_run/Dino_game.html'
             },
             {
                 text: 'Code',
-                link: 'https://github.com/s4sikdar/s4sikdar.github.io/tree/master/chrome_dino_run'
+                link: 'https://github.com/s4sikdar/s4sikdar.github.io/tree/master/new_old_website/chrome_dino_run'
             }
         ],
     },
