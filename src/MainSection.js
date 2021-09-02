@@ -18,7 +18,7 @@ const IconProps = [
             class_name: 'color-light mx-lg-5 smaller',
         },
         link_tag: {
-            link: 'Sailesh Sikdar Resume Winter 2021 updated.pdf',
+            link: 'Sailesh Sikdar Fall 2021 Resume.pdf',
             id: 'Resume',
         },
         classname_inner: 'fas fa-file-pdf fa-sm color-light resume'
