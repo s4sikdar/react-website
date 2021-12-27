@@ -97,8 +97,8 @@ function drawChart() {
             ],
             [
             'C', 2,
-            'I took CS 136 at school this past fall term. I got a decent ' +
-            'mark in it (77).'
+            'I took CS 136 - Elementary Algorithm Design and Data Abstraction in C - ' +
+            'at school this past fall term. I got a decent mark in it (77).'
             ]
       ]);
       

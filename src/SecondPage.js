@@ -34,14 +34,15 @@ const AccordionProps = [
     {
         title: 'About Me',
         text_lines: [
-            'Hi, I\'m Sailesh Sikdar, and I\'m a University of Waterloo student going into my fourth year studying Math and \
-            Business Administration. Though not related to my major, I\'ve grown to have an interest in Software Development \
-            and am currently doing a Back-End Software Development internship at Cisco Systems. I\'m hoping to make it a \
-            full-time job one day. On the side, I\'ve taken some time to learn front-end facing languages and technologies, \
-            and could grow to work in Front-End, Back-End, or even Automation Testing. The question is ',
+            'Hi, I\'m Sailesh Sikdar, and I\'m a 4th-year University of Waterloo student studying Mathematics. My major is in \
+            Mathematics/Business Administration and I\'m doing a minor in Computing (The University of Waterloo\'s equivalent \
+            to a minor in Computer Science). I\'ve grown to have an interest in Software Development and have completed an 8-month \
+            Software Development internship at Cisco Systems. I\'m hoping to make it a full-time job one day. I\'ve learned a little \
+            bit of various aspects of development: front-end, back-end and databases. I could grow to work in front-end development, \
+            back-end development, or maybe even Automation Testing. The question is ',
             ' one?',
-            ' I\'m an incoming 4th year student at the University of Waterloo, currently working a Back-End software development \
-            internship and hoping to make it a full time job.'
+            ' I\'m a 4th year student at the University of Waterloo, who did a software development internship and is hoping to \
+            make it a full-time job.'
         ],
         paragraph_classname: 'mb-0',
         links: [
