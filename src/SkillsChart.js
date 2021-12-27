@@ -40,10 +40,10 @@ So I use ChartJS as a default, and on I.E. 11 I use the GoogleCharts API.
 const ConfigurationOptions = {
     type: 'pie',
     data: {
-        labels: ['Python', 'HTML, CSS, JavaScript', 'REACTjs', 'SQL/SQLite3', 'Git/GitHub', 'Bootstrap', 'Django'],
+        labels: ['Python', 'HTML, CSS, JavaScript', 'REACTjs', 'SQL/SQLite3', 'Git/GitHub', 'Bootstrap', 'Django', 'C'],
         datasets: [{
-            data: [10, 8, 3, 2, 2, 3, 3],
-            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146', '#AD7C59']
+            data: [10, 8, 3, 2, 2, 3, 3, 6],
+            backgroundColor: ['#ffe4c4', '#e9d4b7', '#dfc197', '#d8b27e', '#d0a465', '#c69146', '#AD7C59', '#6F4E37']
         }]
     },
     options: {
@@ -120,6 +120,11 @@ const ConfigurationOptions = {
                                 'at my internship is a Django applicaton, I\'ve done ',
                                 'a little of various things in Django - from templating,',
                                 'to model querying, to view handling functions.'
+                            ]
+                        case 'C':
+                            return [
+                                'I took CS 136 at school this past fall term. I got a ',
+                                'decent mark in it (77).'
                             ]
                     }
                 }
