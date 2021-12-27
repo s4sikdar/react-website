@@ -234,6 +234,24 @@ const SectionProps = [
             }
         ],
         paragraph_classname: 'opaque'
+    },
+    {
+        month: 'August',
+        header: 'August 2021',
+        text_lines: [
+            "I successfully completed an 8-month internship at Cisco Systems. It was an eye-opening experience, and I learned a \
+            ton. I'm not just talking about the technical side of things when I say that. I'm also talking about how the software \
+            development process works in the industry.",
+            " - I finished an 8-month software development internship at Cisco."
+        ],
+        links: [
+            { 
+                last: true,
+                text: 'TL;DR',
+                class_name: 'spaced-link header-font font-weight-bold'
+            }
+        ],
+        paragraph_classname: 'opaque'
     }
 ];
 
